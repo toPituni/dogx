@@ -1,0 +1,13 @@
+<h1><%= @dog.name %></h1>
+
+<ul>
+  <li>IMAGE</li>
+  <li><%= @dog.breed %></li>
+  <li><%= @dog.pick_up_address %></li>
+  <li><%= @dog.special_requirements %></li>
+  <li>owner</li>
+</ul>
+
+<%= link_to "Back", dogs_path %>
+<%= link_to "Edit", edit_dog_path %>
+<%= link_to "Delete", dog_path(@dog), method: :delete %>
