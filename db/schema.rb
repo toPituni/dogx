@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_151028) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
   create_table "dogs", force: :cascade do |t|
@@ -96,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_151028) do
     t.index ["user_id"], name: "index_walks_on_user_id"
   end
 
+  add_foreign_key "destinations", "users"
   add_foreign_key "slots", "dogs"
   add_foreign_key "slots", "walks"
   add_foreign_key "users", "destinations"

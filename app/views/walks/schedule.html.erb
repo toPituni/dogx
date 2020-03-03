@@ -1,0 +1,14 @@
+
+<p> Schedule</p>
+
+
+<%= link_to (Date.today+1).strftime("%A"), walks_schedule_path(Date.today+1) %>
+
+<%= link_to (Date.today+2).strftime("%A"), walks_schedule_path(Date.today+2) %>
+
+<% @walk.slots.order(:place).each do |st|  %>
+  <p> <%= st.dog.name %></p>
+<% end %>
+
+
+
