@@ -34,3 +34,9 @@ puts "created #{Dog.count} Dogs"
 User.create!(name: "Angie", destination: "Alt-Treptow, 12435 Berlin", capicty: 10)
 
 puts "created #{User.count} User"
+
+walk1 = Walk.create!("04-03-2020")
+walk2 = Walk.create!(date:"05-03-2020")
+Slot.create(status:1,place:3,walk:Walk.last,dog:Dog.last)
+Slot.create(status:1,place:2,walk:Walk.last,dog:Dog.first)
+Slot.create(status:1,place:1,walk:Walk.last,dog:Dog.find(3))
