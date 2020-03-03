@@ -31,6 +31,6 @@ Dog.create!(name: "Cookie", pick_up_address: "Turmstraße 73, Berlin", breed: "C
 
 puts "created #{Dog.count} Dogs"
 
-User.create!(first_name: "Angie", last_name: "Walker", destination: "Alt-Treptow, 12435 Berlin", capicty: 10)
+User.create!(name: "Angie", destination: "Alt-Treptow, 12435 Berlin", capicty: 10)
 
 puts "created #{User.count} User"
