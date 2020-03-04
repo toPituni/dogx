@@ -8,16 +8,17 @@ class DogsController < ApplicationController
   end
 
   def new
-    @dog = Dog.new
+    @owner = Owner.new
+    @owner.dogs.build
   end
 
   def create
-    dog = Dog.new(set_dog_params)
-    if dog.save
-      redirect_to dog_path(dog)
-    else
-      render :new
-    end
+    # dog = Dog.new(set_dog_params)
+    # if dog.save
+    #   redirect_to dog_path(dog)
+    # else
+    #   render :new
+    # end
   end
 
   def edit

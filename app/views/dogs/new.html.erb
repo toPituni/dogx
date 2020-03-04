@@ -1,16 +1,23 @@
 <h1>New Dog</h1>
 
+<%= simple_form_for @owner do |m| %>
+  <%= m.input :first_name %>
+  <%= m.input :last_name %>
+  <%= m.input :telephone_number %>
+  <%= m.input :email %>
 
+  <%= m.simple_fields_for :dogs do |p| %>
+    <%= p.input :name %>
+    <%= p.input :breed %>
+    <%= p.input :pick_up_address %>
+    <%= p.input :special_requirements %>
+  <% end %>
+  <%= m.submit %>
+<% end %>
 
-<%= simple_form_for(@dog) do |f| %>
-<h2>DOG INFO</h2>
-  <%= f.input :name %>
+<%#= simple_form_for(@dog) do |f| %>
+<!-- <h2>DOG INFO</h2> -->
 
-  <%= f.input :breed %>
-
-  <%= f.input :pick_up_address %>
-
-  <%= f.input :special_requirements %>
 <!-- <h2>OWNER INFO</h2>
     <%#= f.fields_for :owners do |owner| %>
     <%#= owner.input :first_name %>
@@ -25,7 +32,7 @@
 
   <%#= f.input :email %> -->
 
-  <%= f.submit %>
-<% end %>
+
+<%# end %>
 
 <%= link_to "Cancel", dogs_path %>

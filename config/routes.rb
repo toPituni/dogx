@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :dogs
+  resources :owners, only: [:create]
   # resources :walks
   get  "/walks/:date", to: "walks#schedule", as: "walks_schedule"
 end
