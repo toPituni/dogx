@@ -1,5 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to "SIGN UP", new_user_registration_path %>
-<%= link_to "SIGN OUT", destroy_user_session_path %>
+<div class="banner">
+  <div class="banner-content">
+    <div class="sign-out">
+      <%= link_to "Sign out", destroy_user_session_path %>
+    </div>
+    <h1>THIS IS DOGX</h1>
+    <p>The first planning tool for dogwalkers</p>
+      <div class="start btn-flat-white">
+        <%= "Wau Wau"%>
+      </div>
+      <br>
+      <div class="sign-up btn-empty">
+        <%= link_to "Sign up", new_user_registration_path %>
+      </div>
+  </div>
+</div>
