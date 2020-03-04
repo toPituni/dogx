@@ -1,5 +1,5 @@
 import "bootstrap";
 
-import { nameOfFunction } from  "../plugins/init_map";
+import { initMap } from  "../plugins/init_map";
 
-nameOfFunction();
+initMap();
