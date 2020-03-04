@@ -1,11 +1,14 @@
 <h1><%= @dog.name %></h1>
 
 <ul>
-  <li>IMAGE</li>
-  <li><%= @dog.breed %></li>
-  <li><%= @dog.pick_up_address %></li>
-  <li><%= @dog.special_requirements %></li>
-  <li>owner</li>
+  <li><%= cl_image_tag @dog.image.key, height: 100, width: 100, crop: :fill %></li>
+  <li>Breed: <%= @dog.breed %></li>
+  <li>Special Requirements: <%= @dog.special_requirements %></li>
+  <h2>Owner Info:</h2>
+  <li>Owner: <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
+  <li>Address: <%= @dog.pick_up_address %></li>
+  <li>Phone: <%= @dog.owner.telephone_number %></li>
+  <li>Email: <%= @dog.owner.email %></li>
 </ul>
 
 <%= link_to "Back", dogs_path %>

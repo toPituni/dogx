@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/map', to: "journeys#map"
   resources :dogs
-  resources :owners, only: [:create]
+  resources :owners, only: [:create, :update]
   # resources :walks
   get  "/walks/:date", to: "walks#schedule", as: "walks_schedule"
 end

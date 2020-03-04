@@ -8,8 +8,18 @@ class OwnersController < ApplicationController
     end
   end
 
-  def set_owner_params
-    params.require(:owner).permit(:first_name, :last_name, :telephone_number, :email, dogs_attributes:[:id, :name, :image, :pick_up_address, :breed, :special_requirements])
+
+  def update
+    @owner = Owner.find(params[:id])
+    @owner.update(set_owner_params)
+    redirect_to dogs_path
   end
+
+  private
+
+  def set_owner_params
+    params.require(:owner).permit(:first_name, :last_name, :telephone_number, :email, dogs_attributes:[:id, :name, :pick_up_address, :breed, :special_requirements, :image])
+  end
+
 end
 
