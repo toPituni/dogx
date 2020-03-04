@@ -8,16 +8,17 @@ class DogsController < ApplicationController
   end
 
   def new
-    @dog = Dog.new
+    @owner = Owner.new
+    @owner.dogs.build
   end
 
   def create
-    dog = Dog.new(set_dog_params)
-    if dog.save
-      redirect_to dog_path(dog)
-    else
-      rende :new
-    end
+    # dog = Dog.new(set_dog_params)
+    # if dog.save
+    #   redirect_to dog_path(dog)
+    # else
+    #   render :new
+    # end
   end
 
   def edit
@@ -43,3 +44,5 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
   end
 end
+
+# to be inserted in params: , owners_attributes:[:first_name, :last_name, :phone_number, :email]
