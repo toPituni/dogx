@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_151028) do
+ActiveRecord::Schema.define(version: 2020_03_03_171842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_151028) do
     t.boolean "friday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dog_id"
+    t.index ["dog_id"], name: "index_schedules_on_dog_id"
   end
 
   create_table "slots", force: :cascade do |t|
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_151028) do
   end
 
   add_foreign_key "destinations", "users"
+  add_foreign_key "schedules", "dogs"
   add_foreign_key "slots", "dogs"
   add_foreign_key "slots", "walks"
   add_foreign_key "users", "destinations"
