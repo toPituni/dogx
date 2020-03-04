@@ -8,12 +8,12 @@
 
 puts "cleaning DB"
 
+Schedule.destroy_all
+Slot.destroy_all
 Dog.destroy_all
 User.destroy_all
 Owner.destroy_all
 Walk.destroy_all
-Schedule.destroy_all
-Slot.destroy_all
 
 puts "creating Dogs..."
 
@@ -31,6 +31,12 @@ Dog.create!(name: "Cookie", pick_up_address: "Turmstraße 73, Berlin", breed: "C
 
 puts "created #{Dog.count} Dogs"
 
-User.create!(name: "Angie", destination: "Alt-Treptow, 12435 Berlin", capicty: 10)
+User.create!(name: "Angie Walker", email: "Angie@gmail.com", password: "123456", address: "Alt-Treptow, 12435 Berlin", capacity: 10)
 
 puts "created #{User.count} User"
+
+walk1 = Walk.create!(date: "04-03-2020")
+walk2 = Walk.create!(date:"05-03-2020")
+Slot.create(status:1, place:3, walk:Walk.last, dog: Dog.last)
+Slot.create(status:1, place:2, walk:Walk.last, dog: Dog.first)
+Slot.create(status:1, place:1, walk:Walk.last, dog: Dog.second)
