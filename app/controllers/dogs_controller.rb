@@ -16,7 +16,7 @@ class DogsController < ApplicationController
     if dog.save
       redirect_to dog_path(dog)
     else
-      rende :new
+      render :new
     end
   end
 
@@ -43,3 +43,5 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
   end
 end
+
+# to be inserted in params: , owners_attributes:[:first_name, :last_name, :phone_number, :email]
