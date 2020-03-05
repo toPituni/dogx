@@ -9,7 +9,6 @@ class JourneysController < ApplicationController
     @dogCoordinates = []
     @slots.each do |slot|
     @dogCoordinates << { lat: slot.dog.latitude, lng: slot.dog.longitude }
-
     end
     puts @dogCoordinates
   end

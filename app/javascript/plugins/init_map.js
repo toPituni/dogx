@@ -1,30 +1,30 @@
-// const addR// some initial functions for the styling / interactions of the map from HERE
-// // function for the infowindow bubbles
-// const onBubbleTap = (evt) =>  {
-//   let bubble;
-//   // calculate infobubble position from the cursor screen coordinates
-//   let position = newMap.screenToGeo(
-//     evt.currentPointer.viewportX,
-//     evt.currentPointer.viewportY
-//   );
-//   // read the properties associated with the map feature that triggered the event
-//   let props = evt.target.getData().properties;
-//   // create a content for the infobubble
-//   let content = 'It is a ' + props.kind + ' ' + (props.kind_detail || '') +
-//     (props.population ? ' population: ' + props.population : '') + ' local name is ' + props['name'] + (props['name:ar'] ? 'name in Arabic is '+ props['name:ar'] : '') + '';
-//   // Create a bubble, if not created yet
-//   if (!bubble) {
-//     bubble = new H.ui.InfoBubble(position, {
-//       content: content
-//     });
-//     ui.addBubble(bubble);
-//   } else {
-//     // Reuse existing bubble object
-//     bubble.setPosition(position);
-//     bubble.setContent(content);
-//     bubble.open();
-//   }
-// }
+// some initial functions for the styling / interactions of the map from HERE
+// function for the infowindow bubbles
+const onBubbleTap = (evt) =>  {
+  let bubble;
+  // calculate infobubble position from the cursor screen coordinates
+  let position = newMap.screenToGeo(
+    evt.currentPointer.viewportX,
+    evt.currentPointer.viewportY
+  );
+  // read the properties associated with the map feature that triggered the event
+  let props = evt.target.getData().properties;
+  // create a content for the infobubble
+  let content = 'It is a ' + props.kind + ' ' + (props.kind_detail || '') +
+    (props.population ? ' population: ' + props.population : '') + ' local name is ' + props['name'] + (props['name:ar'] ? 'name in Arabic is '+ props['name:ar'] : '') + '';
+  // Create a bubble, if not created yet
+  if (!bubble) {
+    bubble = new H.ui.InfoBubble(position, {
+      content: content
+    });
+    ui.addBubble(bubble);
+  } else {
+    // Reuse existing bubble object
+    bubble.setPosition(position);
+    bubble.setContent(content);
+    bubble.open();
+  }
+}
 // setting the interactive layers for the map(satellite, etc)
 const setInteractive = (map) => {
   // get the vector provider from the base layer
@@ -38,7 +38,8 @@ const setInteractive = (map) => {
       style.setInteractive(['places', 'places.populated-places'], true);
       // add an event listener that is responsible for catching the
       // 'tap' event on the feature and showing the infobubble
-      //  provider.addEventListener('tap', onBubbleTap);
+
+      provider.addEventListener('tap', onBubbleTap);
     }
   };
   style.addEventListener('change', changeListener);
@@ -54,6 +55,7 @@ const addRouteToMap = (result, map) => {
   if(result.response.route) {
   // Pick the first route from the response:
   route = result.response.route[0];
+  console.log(route);
   // Pick the route's shape:
   routeShape = route.shape;
   // Create a linestring to use as a point source for the route line
@@ -66,7 +68,6 @@ const addRouteToMap = (result, map) => {
   // Retrieve the mapped positions of the requested waypoints:
   startPoint = route.waypoint[0].mappedPosition;
   endPoint = route.waypoint[3].mappedPosition;
-
   const dogStops = []
   route.waypoint.forEach((waypoint) => {
     const marker = new H.map.Marker({
@@ -87,6 +88,7 @@ const addRouteToMap = (result, map) => {
   map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
   }
 };
+
 const div = document.getElementById("map");
 const dogCoordinates = JSON.parse(div.dataset.coordinates)
 
@@ -96,6 +98,7 @@ const addResponseToMap = (map) => {
   const secondStop = [dogCoordinates[2]["lat"], dogCoordinates[2]["lng"]]
   const thirdStop = [dogCoordinates[3]["lat"], dogCoordinates[3]["lng"]]
   const representation = "display"
+
   const mode = ["fastest","car","traffic"]
   const key = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA"
   const departure = "now"
@@ -129,6 +132,8 @@ const initMap = () => {
   const defaultLayers = platform.createDefaultLayers();
   const newMap = createMapElement(defaultLayers);
   addResponseToMap(newMap);
+
+  // addRoutingToMap(newMap, platform);
   window.addEventListener('resize', () => newMap.getViewPort().resize());
   // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
   const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(newMap));

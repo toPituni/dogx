@@ -15,7 +15,6 @@ Dog.destroy_all
 User.destroy_all
 Owner.destroy_all
 Walk.destroy_all
-
 puts "Creating Owners..."
 
 o1 = Owner.create!(first_name: "Toni", last_name: "Panacek", telephone_number: 0301112233, email: "toni@email.com")
@@ -71,22 +70,34 @@ d5.image.attach(io: file, filename: 'LLmWdcNnqPTrGqYg8yo1oatC', content_type: 'i
 
 puts "Created #{Dog.count} Dogs"
 
-
-puts "Creating User..."
-
+puts "creating Users..."
 User.create!(name: "Angie Walker", email: "Angie@gmail.com", password: "123456", address: "Alt-Treptow, 12435 Berlin", capacity: 10)
-
-puts "Created #{User.count} User!"
+puts "created #{User.count} User"
 
 puts "Creating Schedules..."
 
 Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d1)
 Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: true, friday: true, dog:d2)
+Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d3)
+Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: true, friday: false, dog:d4)
+Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true, friday: true, dog:d5)
+puts "created #{Schedule.count} schedule"
 
-puts "Created #{Schedule.count} Schedules!"
-# walk1 = Walk.create!(date: "04-03-2020")
-# walk2 = Walk.create!(date:"05-03-2020")
-# Slot.create!(status:1, place:3, walk:Walk.last, dog: Dog.last)
-# Slot.create!(status:1, place:2, walk:Walk.last, dog: Dog.first)
-# Slot.create!(status:1, place:1, walk:Walk.last, dog: Dog.second)
-# Slot.create!(status:1, place:1, walk:Walk.first, dog: Dog.second)
+puts "creating Walks..."
+walk1 = Walk.create!(date: "05-03-2020",user: User.first)
+walk2 = Walk.create!(date:"06-03-2020", user: User.first)
+puts "created #{Walk.count} walks"
+
+puts "creating Slots..."
+Slot.create!(status:1, walk: walk1, dog: d2)
+Slot.create!(status:1, walk: walk1, dog: d4)
+Slot.create!(status:1, walk: walk1, dog: d5)
+Slot.create!(status:1, walk: walk2, dog: d1)
+Slot.create!(status:1, walk: walk2, dog: d2)
+Slot.create!(status:1, walk: walk2, dog: d3)
+Slot.create!(status:1, walk: walk2, dog: d5)
+
+puts "created #{Slot.count} slots"
+
+
+
