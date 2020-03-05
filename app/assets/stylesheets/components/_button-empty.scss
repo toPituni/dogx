@@ -1,0 +1,17 @@
+.btn-empty {
+  color: $light-gray;
+  padding: 8px 24px;
+  border-radius: 50px;
+  border: solid 2px;
+  border-color: $light-gray;
+  transition: background 0.3s ease;
+  width: 250px;
+  height: 43px;
+
+}
+
+.btn-empty:hover {
+  background: $light-gray;
+  color: white;
+}
+
