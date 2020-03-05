@@ -1,23 +1,15 @@
 class JourneysController < ApplicationController
   def map
-    current_time = Time.now
-    year = current_time.year
-    month = current_time.month
-    day = current_time.day
-
-    date = Date.new(year, month, day)
-    # date.friday? => false
-
-    # if @walk.date == date.today
-    # need to pass through the particular instance of walk for the day we are currently on
-    # that walk.slots then, get the dog from each slot and send the dogs lat and lng through the dataset in the map div
-    @dogs = Dog.geocoded #returns dogs with coordinates
-
-    @markers = @dogs.map do |dog|
-      {
-        lat: dog.latitude,
-        lng: dog.longitude
-      }
+    #  find walk from todays date
+    @walk = Walk.where(date: Date.today)
+    @slots = Slot.where(walk_id: @walk.ids)
+    # iterate over the slots, and for each slot.dog
+    # push the dogs lat, lng as an object, into a parent array
+    # this parent array we will access in the view, with the dataset
+    @dogCoordinates = []
+    @slots.each do |slot|
+    @dogCoordinates << { lat: slot.dog.latitude, lng: slot.dog.longitude }
     end
+    puts @dogCoordinates
   end
 end
