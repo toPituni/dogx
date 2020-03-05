@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_171842) do
     t.string "special_requirements"
     t.bigint "owner_id"
     t.bigint "user_id"
+    # schedule_id doesnt exist
     t.bigint "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
