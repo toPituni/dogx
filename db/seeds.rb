@@ -26,8 +26,8 @@ Dog.create!(name: "Hulk", pick_up_address: "Invalidenstraße 3, Berlin", breed: 
 Dog.create!(name: "T-Bone", pick_up_address: "Bernauer Straße 22, Berlin", breed: "Akita", special_requirements: "none")
 Dog.create!(name: "Jimmy", pick_up_address: "Kaiserdamm 65, Berlin", breed: "Chug", special_requirements: "none")
 Dog.create!(name: "Bobby", pick_up_address: "Kopenhagener Straße 1, Berlin", breed: "Beagle", special_requirements: "none")
-Dog.create!(name: "Gizzmo", pick_up_address: "Warschauer Straße 38, Berlin", breed: "Shiba", special_requirements: "none")
-Dog.create!(name: "Cookie", pick_up_address: "Turmstraße 73, Berlin", breed: "Cockerl Spaniel", special_requirements: "none")
+d1 = Dog.create!(name: "Gizzmo", pick_up_address: "Warschauer Straße 38, Berlin", breed: "Shiba", special_requirements: "none")
+d2 = Dog.create!(name: "Cookie", pick_up_address: "Turmstraße 73, Berlin", breed: "Cockerl Spaniel", special_requirements: "none")
 
 puts "created #{Dog.count} Dogs"
 
@@ -35,8 +35,12 @@ User.create!(name: "Angie Walker", email: "Angie@gmail.com", password: "123456",
 
 puts "created #{User.count} User"
 
-walk1 = Walk.create!(date: "04-03-2020")
-walk2 = Walk.create!(date:"05-03-2020")
-Slot.create(status:1, place:3, walk:Walk.last, dog: Dog.last)
-Slot.create(status:1, place:2, walk:Walk.last, dog: Dog.first)
-Slot.create(status:1, place:1, walk:Walk.last, dog: Dog.second)
+Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d1)
+Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: true, friday: true, dog:d2)
+puts "created #{Schedule.count} schedule"
+# walk1 = Walk.create!(date: "04-03-2020")
+# walk2 = Walk.create!(date:"05-03-2020")
+# Slot.create!(status:1, place:3, walk:Walk.last, dog: Dog.last)
+# Slot.create!(status:1, place:2, walk:Walk.last, dog: Dog.first)
+# Slot.create!(status:1, place:1, walk:Walk.last, dog: Dog.second)
+# Slot.create!(status:1, place:1, walk:Walk.first, dog: Dog.second)
