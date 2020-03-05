@@ -1,18 +1,20 @@
 <h1>Edit Profile</h1>
 
-<%= form_for(@dog) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :breed %>
-  <%= f.text_field :breed %>
-
-  <%= f.label :pick_up_address %>
-  <%= f.text_field :pick_up_address %>
-
-  <%= f.label :special_requirements %>
-  <%= f.text_field :special_requirements %>
-  <%= f.submit %>
+<%= simple_form_for @owner do |m| %>
+<h2>Owner Info:</h2>
+  <%= m.input :first_name %>
+  <%= m.input :last_name %>
+  <%= m.input :telephone_number %>
+  <%= m.input :email %>
+<h2>Dog Info:</h2>
+  <%= m.simple_fields_for :dogs do |p| %>
+    <%= p.input :name %>
+    <%= p.input :breed %>
+    <%= p.input :pick_up_address %>
+    <%= p.input :special_requirements %>
+    <%= p.input :image, as: :file %>
+  <% end %>
+  <%= m.submit "Update"%>
 <% end %>
 
 <%= link_to "Cancel", dog_path(@dog.id) %>

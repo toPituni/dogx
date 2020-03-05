@@ -1,34 +1,34 @@
 class DogsController < ApplicationController
-  before_action :set_dog, only: [ :show, :edit, :update, :destroy ]
   def index
     @dogs = Dog.all
   end
 
   def show
+    @dog = Dog.find(params[:id])
   end
 
   def new
-    @dog = Dog.new
+    @owner = Owner.new
+    @owner.dogs.build
   end
 
   def create
-    dog = Dog.new(set_dog_params)
-    if dog.save
-      redirect_to dog_path(dog)
-    else
-      rende :new
-    end
+    # dog = Dog.new(set_dog_params)
+    # if dog.save
+    #   redirect_to dog_path(dog)
+    # else
+    #   render :new
+    # end
   end
 
-  def edit
+   def edit
+    @dog = Dog.find(params[:id])
+    @owner = @dog.owner
   end
 
-  def update
-    @dog.update(set_dog_params)
-    redirect_to dog_path(@dog)
-  end
 
   def destroy
+    @dog = Dog.find(params[:id])
     @dog.delete
     redirect_to dogs_path
   end
@@ -39,7 +39,6 @@ class DogsController < ApplicationController
     params.require(:dog).permit(:name, :breed, :pick_up_address, :special_requirements)
   end
 
-  def set_dog
-    @dog = Dog.find(params[:id])
-  end
 end
+
+# to be inserted in params: , owners_attributes:[:first_name, :last_name, :phone_number, :email]

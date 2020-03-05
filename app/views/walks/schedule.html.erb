@@ -2,13 +2,16 @@
 <p> Schedule</p>
 
 
+<%= link_to (Date.today).strftime("%A"), walks_schedule_path(Date.today) %>
+
 <%= link_to (Date.today+1).strftime("%A"), walks_schedule_path(Date.today+1) %>
 
-<%= link_to (Date.today+2).strftime("%A"), walks_schedule_path(Date.today+2) %>
-
-<% @walk.slots.order(:place).each do |st|  %>
+<% @walk.slots.each do |st|  %>
   <p> <%= st.dog.name %></p>
 <% end %>
 
+<br>
+<br>
+<p>  Here i search dog which has schedule on thursday from "Schedule table"</p>
 
 
