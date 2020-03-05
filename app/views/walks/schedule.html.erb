@@ -2,16 +2,36 @@
 <p> Schedule</p>
 
 
-<%= link_to (Date.today).strftime("%A"), walks_schedule_path(Date.today) %>
 
-<%= link_to (Date.today+1).strftime("%A"), walks_schedule_path(Date.today+1) %>
 
-<% @walk.slots.each do |st|  %>
-  <p> <%= st.dog.name %></p>
+
+
+<% @days_from_this_week.each do |day| %>
+  <%= link_to day.strftime("%A"), walks_schedule_path(day)%>
 <% end %>
 
-<br>
-<br>
-<p>  Here i search dog which has schedule on thursday from "Schedule table"</p>
+
+<% @walk.slots.each do |st|  %>
+  <p> <%= st.dog.name %> </p>
+<% end %>
+
+
+<!-- simple form add_slot_path  -->
+<%#= render 'slots/new_slot' %>
+
+<%= simple_form_for @slot, method: :post do |f|%>
+  <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Select Dog' %>
+  <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+  <%= f.submit "+"%>
+<% end %>
+
+<!-- this should be in partial in 'slots/new
+
+
+
+
+
+
+
 
 

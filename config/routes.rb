@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get '/map', to: "journeys#map"
   resources :dogs
   resources :owners, only: [:create, :update]
-  # resources :walks
+  # routes for walks
   get  "/walks/:date", to: "walks#schedule", as: "walks_schedule"
+  resources :slots, only: [:new,:create]
+
+
 end
 
 
