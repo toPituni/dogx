@@ -1,12 +1,16 @@
 class JourneysController < ApplicationController
   def map
-    @dogs = Dog.geocoded #returns dogs with coordinates
+    #  find walk from todays date
+    @walk = Walk.where(date: Date.today)
+    @slots = Slot.where(walk_id: @walk.ids)
+    # iterate over the slots, and for each slot.dog
+    # push the dogs lat, lng as an object, into a parent array
+    # this parent array we will access in the view, with the dataset
+    @dogCoordinates = []
+    @slots.each do |slot|
+    @dogCoordinates << { lat: slot.dog.latitude, lng: slot.dog.longitude }
 
-    @markers = @dogs.map do |dog|
-      {
-        lat: dog.latitude,
-        lng: dog.longitude
-      }
     end
+    puts @dogCoordinates
   end
 end
