@@ -97,10 +97,10 @@ const dogCoordinates = JSON.parse(div.dataset.coordinates)
 console.log(dogCoordinates)
 
 const addResponseToMap = (map) => {
-  const startingPoint = [dogCoordinates[0]["lat"], dogCoordinates[0]["lng"]]
+  const startingPoint = [dogCoordinates[3]["lat"], dogCoordinates[3]["lng"]]
   const firstStop = [dogCoordinates[1]["lat"], dogCoordinates[1]["lng"]]
-  const secondStop = [dogCoordinates[2]["lat"], dogCoordinates[2]["lng"]]
-  const thirdStop = [dogCoordinates[3]["lat"], dogCoordinates[3]["lng"]]
+  const secondStop = [dogCoordinates[0]["lat"], dogCoordinates[0]["lng"]]
+  const thirdStop = [dogCoordinates[2]["lat"], dogCoordinates[2]["lng"]]
   const representation = "display"
 
   const mode = ["fastest","car","traffic"]
