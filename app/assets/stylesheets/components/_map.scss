@@ -2,3 +2,13 @@
 width: 100%;
 margin-bottom: 50px;
 }
+
+// getting rid of the HERE MAP LOGO and Copyrightstuff
+
+.H_copyright{
+  display: none;
+}
+
+.H_logo{
+  display: none !important;
+}
