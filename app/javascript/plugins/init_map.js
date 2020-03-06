@@ -46,6 +46,10 @@ const setInteractive = (map) => {
 }
 // our code to deal with API responses and creating the map
 
+const calculateRoute = (map, platform) => {
+
+}
+
 const addRouteToMap = (result, map) => {
     let route,
     routeShape,
@@ -91,22 +95,22 @@ const addRouteToMap = (result, map) => {
 
 const div = document.getElementById("map");
 const dogCoordinates = JSON.parse(div.dataset.coordinates)
-
+const userAddress = JSON.parse(div.dataset.userAddress)
 const addResponseToMap = (map) => {
-  const startingPoint = [dogCoordinates[0]["lat"], dogCoordinates[0]["lng"]]
-  const firstStop = [dogCoordinates[1]["lat"], dogCoordinates[1]["lng"]]
-  const secondStop = [dogCoordinates[2]["lat"], dogCoordinates[2]["lng"]]
-  const thirdStop = [dogCoordinates[3]["lat"], dogCoordinates[3]["lng"]]
-  const representation = "display"
 
+  const startingPoint = [dogCoordinates[0], dogCoordinates[0]]
+  const firstStop = [dogCoordinates[1], dogCoordinates[1]]
+  const secondStop = [dogCoordinates[2], dogCoordinates[2]]
+  const thirdStop = [dogCoordinates[3], dogCoordinates[3]]
+  const representation = "display"
   const mode = ["fastest","car","traffic"]
-  const key = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA"
+  const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA"
   const departure = "now"
-  const baseUrl = 'https://route.ls.hereapi.com/routing/7.2/calculateroute.json?';
-  const baseUrl2 = 'https://wse.ls.hereapi.com/2/findsequence.json?'
-  const endpoint2 = `${baseUrl2}start=${startingPoint[0]},${startingPoint[1]}&destination1=${firstStop[0]}%2C${firstStop[1]}&destination2=${secondStop[0]}%2C${secondStop[1]}&end=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]};${mode[1]}&apiKey=${key}`
-  const endpoint = `${baseUrl}waypoint0=${startingPoint[0]},${startingPoint[1]}&waypoint1=${firstStop[0]}%2C${firstStop[1]}&waypoint2=${secondStop[0]}%2C${secondStop[1]}&waypoint3=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]}%3B${mode[1]}%3B${mode[2]}%3Aenabled&departure=${departure}&apiKey=${key}`
- fetch(endpoint)
+  const baseSequenceUrl = 'https://wse.ls.hereapi.com/2/findsequence.json?'
+  const baseRouteUrl = 'https://route.ls.hereapi.com/routing/7.2/calculateroute.json?';
+  const sequenceEndpoint = `${baseSequenceUrl}start=${startingPoint[0]},${startingPoint[1]}&destination1=${firstStop[0]}%2C${firstStop[1]}&destination2=${secondStop[0]}%2C${secondStop[1]}&end=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]};${mode[1]}&apiKey=${apiKey}`
+  const routeEndpoint = `${baseRouteUrl}waypoint0=${startingPoint[0]},${startingPoint[1]}&waypoint1=${firstStop[0]}%2C${firstStop[1]}&waypoint2=${secondStop[0]}%2C${secondStop[1]}&waypoint3=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]}%3B${mode[1]}%3B${mode[2]}%3Aenabled&departure=${departure}&apiKey=${apiKey}`
+ fetch(sequenceEndpoint)
   .then(response => response.json())
   .then((data) => {
     console.log(data);
@@ -125,6 +129,7 @@ const createMapElement = (defaultLayers) => {
   const ui = H.ui.UI.createDefault(map, defaultLayers);
   return map;
 };
+
 const initMap = () => {
   const platform = new H.service.Platform({
     apikey: 'kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA'

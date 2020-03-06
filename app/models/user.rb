@@ -7,6 +7,9 @@ class User < ApplicationRecord
   # have a look at this
   has_many :walks
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   after_create :make_user_walks # Run on create & update
 
   private
