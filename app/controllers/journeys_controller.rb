@@ -1,8 +1,8 @@
 class JourneysController < ApplicationController
   def map
     #  find walk from todays date
-    @walk = Walk.where(date: Date.yesterday) #NEEDS TO BE CHANGED!! SHOULD BE TODAY AND NOT YESTERDAY
-    @slots = Slot.where(walk_id: @walk.ids)
+    @walk = Walk.where(date: Date.today) #NEEDS TO BE CHANGED!! SHOULD BE TODAY AND NOT YESTERDAY
+    @slots = @walk.slots
     # iterate over the slots, and for each slot.dog
     # push the dogs lat, lng as an object, into a parent array
     # this parent array we will access in the view, with the dataset
