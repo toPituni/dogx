@@ -123,7 +123,16 @@ const createMapElement = (defaultLayers) => {
     pixelRatio: window.devicePixelRatio || 1
   });
   const ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  var mapSettings = ui.getControl('mapsettings');
+var zoom = ui.getControl('zoom');
+var scalebar = ui.getControl('scalebar');
+
+  mapSettings.setAlignment('top-left');
+  zoom.setAlignment('top-left');
+  scalebar.setAlignment('top-left');
   return map;
+
 };
 const initMap = () => {
   const platform = new H.service.Platform({
@@ -139,4 +148,5 @@ const initMap = () => {
   const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(newMap));
   setInteractive(newMap);
 }
+
 export { initMap };
