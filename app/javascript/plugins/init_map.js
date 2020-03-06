@@ -27,31 +27,21 @@ const onBubbleTap = (evt) =>  {
 }
 // setting the interactive layers for the map(satellite, etc)
 const setInteractive = (map) => {
-  // get the vector provider from the base layer
   const provider = map.getBaseLayer().getProvider();
-  // get the style object for the base layer
   const style = provider.getStyle();
   const changeListener = (evt) => {
     if (style.getState() === H.map.Style.State.READY) {
       style.removeEventListener('change', changeListener);
-      // enable interactions for the desired map features
       style.setInteractive(['places', 'places.populated-places'], true);
-      // add an event listener that is responsible for catching the
-      // 'tap' event on the feature and showing the infobubble
-
-      provider.addEventListener('tap', onBubbleTap);
+      // provider.addEventListener('tap', onBubbleTap);
     }
   };
   style.addEventListener('change', changeListener);
 }
+
 // our code to deal with API responses and creating the map
-
-const calculateRoute = (map, platform) => {
-
-}
-
 const addRouteToMap = (result, map) => {
-    let route,
+  let route,
     routeShape,
     startPoint,
     endPoint,
@@ -59,7 +49,6 @@ const addRouteToMap = (result, map) => {
   if(result.response.route) {
   // Pick the first route from the response:
   route = result.response.route[0];
-  console.log(route);
   // Pick the route's shape:
   routeShape = route.shape;
   // Create a linestring to use as a point source for the route line
@@ -70,8 +59,6 @@ const addRouteToMap = (result, map) => {
     linestring.pushLatLngAlt(parts[0], parts[1]);
   });
   // Retrieve the mapped positions of the requested waypoints:
-  startPoint = route.waypoint[0].mappedPosition;
-  endPoint = route.waypoint[3].mappedPosition;
   const dogStops = []
   route.waypoint.forEach((waypoint) => {
     const marker = new H.map.Marker({
@@ -81,7 +68,6 @@ const addRouteToMap = (result, map) => {
     map.addObject(marker);
     dogStops.push(marker);
   });
-  console.log(dogStops)
   // Create a polyline to display the route:
   const routeLine = new H.map.Polyline(linestring, {
     style: { strokeColor: 'blue', lineWidth: 3 }
@@ -94,32 +80,46 @@ const addRouteToMap = (result, map) => {
 };
 
 const div = document.getElementById("map");
-const dogCoordinates = JSON.parse(div.dataset.coordinates)
-const userAddress = JSON.parse(div.dataset.userAddress)
-const addResponseToMap = (map) => {
+const dogCoordinates = JSON.parse(div.dataset.coordinates);
+const userAddress = JSON.parse(div.dataset.userAddress);
+const destination = JSON.parse(div.dataset.destination);
+console.log(dogCoordinates);
 
-  const startingPoint = [dogCoordinates[0], dogCoordinates[0]]
-  const firstStop = [dogCoordinates[1], dogCoordinates[1]]
-  const secondStop = [dogCoordinates[2], dogCoordinates[2]]
-  const thirdStop = [dogCoordinates[3], dogCoordinates[3]]
-  const representation = "display"
-  const mode = ["fastest","car","traffic"]
-  const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA"
-  const departure = "now"
-  const baseSequenceUrl = 'https://wse.ls.hereapi.com/2/findsequence.json?'
-  const baseRouteUrl = 'https://route.ls.hereapi.com/routing/7.2/calculateroute.json?';
-  const sequenceEndpoint = `${baseSequenceUrl}start=${startingPoint[0]},${startingPoint[1]}&destination1=${firstStop[0]}%2C${firstStop[1]}&destination2=${secondStop[0]}%2C${secondStop[1]}&end=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]};${mode[1]}&apiKey=${apiKey}`
-  const routeEndpoint = `${baseRouteUrl}waypoint0=${startingPoint[0]},${startingPoint[1]}&waypoint1=${firstStop[0]}%2C${firstStop[1]}&waypoint2=${secondStop[0]}%2C${secondStop[1]}&waypoint3=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]}%3B${mode[1]}%3B${mode[2]}%3Aenabled&departure=${departure}&apiKey=${apiKey}`
- fetch(sequenceEndpoint)
+const fetchRoute = (data, map) => {
+  const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA";
+  let routeEndpoint = `https://route.ls.hereapi.com/routing/7.2/calculateroute.json?waypoint0=${userAddress.join(',')}`;
+  const waypoints = data.results[0].waypoints;
+  for ( let i = 0; i < waypoints.length; i++) {
+    routeEndpoint += `&waypoint${i+1}=${waypoints[i].lat},${waypoints[i].lng}`;
+  }
+  routeEndpoint += `&representation=display&mode=fastest;car&departure=now&apiKey=${apiKey}`;
+  fetch(routeEndpoint)
   .then(response => response.json())
   .then((data) => {
     console.log(data);
-    addRouteToMap(data, map)
-     });
-};
+    addRouteToMap(data, map);
+  });
+}
+
+const fetchSequence = (map) => {
+  const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA";
+  let sequenceEndpoint = `https://wse.ls.hereapi.com/2/findsequence.json?start=${userAddress.join(',')}`;
+  for (let [key, value] of Object.entries(dogCoordinates)) {
+    sequenceEndpoint += `&destination${key+1}=${value}`
+  };
+  const dogCoordsLength = Object.keys(dogCoordinates).length;
+  if (destination) {
+    sequenceEndpoint += `&destination${dogCoordsLength + 1}=${destination.join(',')}`;
+  };
+  sequenceEndpoint += `&mode=fastest;car&departure=now&apiKey=${apiKey}`;
+  fetch(sequenceEndpoint)
+  .then(response => response.json())
+  .then((data) => {
+    fetchRoute(data, map);
+  });
+}
 
 const createMapElement = (defaultLayers) => {
-  //Step 2: initialize a map
   const map = new H.Map(document.getElementById('map'),
     defaultLayers.vector.normal.map, {
     center: {lat: 52.51477270923461, lng: 13.39846691425174},
@@ -136,9 +136,7 @@ const initMap = () => {
   });
   const defaultLayers = platform.createDefaultLayers();
   const newMap = createMapElement(defaultLayers);
-  addResponseToMap(newMap);
-
-  // addRoutingToMap(newMap, platform);
+  fetchSequence(newMap);
   window.addEventListener('resize', () => newMap.getViewPort().resize());
   // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
   const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(newMap));
