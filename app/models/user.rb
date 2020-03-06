@@ -6,12 +6,6 @@ class User < ApplicationRecord
 
   # have a look at this
   has_many :walks
+  has_many :dogs
 
-  after_create :make_user_walks # Run on create & update
-
-  private
-
-  def make_user_walks
-    CreateUserWalksJob.perform_later(self.id)
-  end
 end
