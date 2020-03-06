@@ -4,8 +4,6 @@
 
 
 
-
-
 <% @days_from_this_week.each do |day| %>
   <%= link_to day.strftime("%A"), walks_schedule_path(day)%>
 <% end %>
