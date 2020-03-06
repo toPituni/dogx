@@ -17,9 +17,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <div class="container">
     <%= yield %>
-    </div>
     <%= render 'shared/navbar' unless @no_navbar%>
     <p class="notice"><%= notice %></p>
     <p class="altert"><%= alert %></p>
