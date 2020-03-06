@@ -68,6 +68,7 @@ const addRouteToMap = (result, map) => {
   // Retrieve the mapped positions of the requested waypoints:
   startPoint = route.waypoint[0].mappedPosition;
   endPoint = route.waypoint[3].mappedPosition;
+
   const dogStops = []
   route.waypoint.forEach((waypoint) => {
     const marker = new H.map.Marker({
@@ -90,7 +91,10 @@ const addRouteToMap = (result, map) => {
 };
 
 const div = document.getElementById("map");
+console.log(div)
 const dogCoordinates = JSON.parse(div.dataset.coordinates)
+
+console.log(dogCoordinates)
 
 const addResponseToMap = (map) => {
   const startingPoint = [dogCoordinates[0]["lat"], dogCoordinates[0]["lng"]]
@@ -103,7 +107,7 @@ const addResponseToMap = (map) => {
   const key = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA"
   const departure = "now"
   const baseUrl = 'https://route.ls.hereapi.com/routing/7.2/calculateroute.json?';
-  const baseUrl2 = 'https://wse.ls.hereapi.com/2/findsequence.json?'
+  const baseUrl2 = 'https://wse.ls.hereapi.com/2/findsequence.json?';
   const endpoint2 = `${baseUrl2}start=${startingPoint[0]},${startingPoint[1]}&destination1=${firstStop[0]}%2C${firstStop[1]}&destination2=${secondStop[0]}%2C${secondStop[1]}&end=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]};${mode[1]}&apiKey=${key}`
   const endpoint = `${baseUrl}waypoint0=${startingPoint[0]},${startingPoint[1]}&waypoint1=${firstStop[0]}%2C${firstStop[1]}&waypoint2=${secondStop[0]}%2C${secondStop[1]}&waypoint3=${thirdStop[0]}%2C${thirdStop[1]}&representation=${representation}&mode=${mode[0]}%3B${mode[1]}%3B${mode[2]}%3Aenabled&departure=${departure}&apiKey=${key}`
  fetch(endpoint)
