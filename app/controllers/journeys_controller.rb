@@ -2,8 +2,9 @@ class JourneysController < ApplicationController
   def map
     @map = true
     @user_coordinates = [current_user.latitude, current_user.longitude]
-    @walk = Walk.where(date: Date.today)
-    @slots = Slot.where(walk_id: @walk.ids)
+    #  find walk from todays date
+    @walk = Walk.where(date: Date.today) #NEEDS TO BE CHANGED!! SHOULD BE TODAY AND NOT YESTERDAY
+    @slots = @walk.slots
     coords = []
     @dog_coordinates = {}
     @slots.each_with_index do |slot, index|

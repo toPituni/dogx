@@ -1,11 +1,21 @@
-<div class="view-container">
-<h1>My Dogx</h1>
-
-<ul>
-<% @dogs.each do |dog| %>
-  <li><%= link_to dog.name, dog_path(dog.id) %></li>
-<% end %>
-</ul>
-
-<%= link_to "Add a dog", new_dog_path %>
+<div class="container">
+<div class="Index-header">
+  <h2>My Dogx</h2>
 </div>
+
+<% @dogs.each do |dog| %>
+  <%= link_to  dog_path(dog.id), class: "dog-link" do %>
+    <div class="card-product">
+      <%= cl_image_tag dog.image.key, height: 80, width: 80, crop: :fill  %>
+      <div class="card-product-infos">
+        <h2><%= dog.name %></h2>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+  <div class="index-button start btn-flat-white">
+    <%= link_to "Add a dog", new_dog_path %>
+  </div>
+</div>
+

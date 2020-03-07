@@ -83,7 +83,6 @@ const div = document.getElementById("map");
 const dogCoordinates = JSON.parse(div.dataset.coordinates);
 const userAddress = JSON.parse(div.dataset.userAddress);
 const destination = JSON.parse(div.dataset.destination);
-console.log(dogCoordinates);
 
 const fetchRoute = (data, map) => {
   const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA";
@@ -127,7 +126,16 @@ const createMapElement = (defaultLayers) => {
     pixelRatio: window.devicePixelRatio || 1
   });
   const ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  var mapSettings = ui.getControl('mapsettings');
+var zoom = ui.getControl('zoom');
+var scalebar = ui.getControl('scalebar');
+
+  mapSettings.setAlignment('top-left');
+  zoom.setAlignment('top-left');
+  scalebar.setAlignment('top-left');
   return map;
+
 };
 
 const initMap = () => {
@@ -142,4 +150,5 @@ const initMap = () => {
   const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(newMap));
   setInteractive(newMap);
 }
+
 export { initMap };
