@@ -12,6 +12,8 @@
 
     <div class ="days_list" >
       <%= link_to day.strftime("%A").first(3), walks_schedule_path(day), class: "font-weight-bold" %>
+       <i class="far fa-horizontal-rule"></i>
+
     </div>
   <% end %>
 
@@ -20,11 +22,11 @@
 
 <% @walk.slots.each do |st|  %>
   <div class = "card-product">
-   <%= cl_image_tag st.dog.image.key, height: 80, width: 100, crop: :fill, class: "avatar"  %>
-    <div class="card-product-infos">
+   <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
+    <div class="name_and_icon">
         <h2><%= st.dog.name %></h2>
-        <%= link_to @slot, method: :delete do %>
-            <i class="fas fa-minus-circle icon_style"></i>
+          <%= link_to @slot, method: :delete do %>
+             <i class="fas fa-minus-circle icon_style"></i>
         <% end %>
     </div>
   </div>
