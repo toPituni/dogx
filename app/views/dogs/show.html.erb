@@ -3,10 +3,12 @@
 </div>
 <div class="container">
   <div class="owner-card">
+    <div class="center-avatar">
     <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
+    </div>
     <ul>
       <li><span>Breed:</span> <%= @dog.breed %></li>
-      <li><span>Special Requirements:</span> <br><%= @dog.special_requirements %><br><br></li>
+      <li><span>Notes:</span> <%= @dog.special_requirements %><br><br></li>
       <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
       <li><span>Address:</span> <%= @dog.pick_up_address %></li>
       <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
