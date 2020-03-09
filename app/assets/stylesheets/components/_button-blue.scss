@@ -2,13 +2,18 @@
   color: white;
   padding: 8px 24px;
   border-radius: 50px;
-  background: #70D0F9;
+  background: #169FDA;
   transition: background 0.3s ease;
   width: 350px;
+  text-decoration: none;
   // height: 45px;
 }
 
+.btn-flat a {
+  color: white;
+}
+
 .btn-flat:hover {
-  background: #5cbce6;
+  background: #169FDA;
   color: white;
 }

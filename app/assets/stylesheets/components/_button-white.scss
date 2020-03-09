@@ -1,18 +1,20 @@
 .btn-flat-white {
-  color: grey;
+  color: gray;
   padding: 8px 24px;
   border-radius: 50px;
   background: white;
   transition: background 0.3s ease;
   width: 250px;
+  text-decoration: none;
+  border-shadow: 0 0 5px rgba(0,0,0,0.1);
   // height: 45px;
+}
+
+.btn-flat:hover a {
+  background: #169FDA;
+  color: white;
 }
 
 .index-button {
 margin-bottom: 90px;
 }
-
-// .btn-flat:hover {
-//   background: #5cbce6;
-//   color: white;
-// }

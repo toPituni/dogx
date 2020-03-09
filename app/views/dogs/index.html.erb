@@ -1,21 +1,27 @@
-<div class="container">
 <div class="Index-header">
   <h2>My Dogx</h2>
 </div>
-
-<% @dogs.each do |dog| %>
-  <%= link_to  dog_path(dog.id), class: "dog-link" do %>
-    <div class="card-product">
-      <%= cl_image_tag dog.image.key, height: 80, width: 80, crop: :fill  %>
-      <div class="card-product-infos">
-        <h2><%= dog.name %></h2>
+<br>
+<div class="container">
+  <% @dogs.each do |dog| %>
+    <%= link_to  dog_path(dog.id), class: "dog-link" do %>
+      <div class="card-product">
+        <%= cl_image_tag dog.image.key, height: 80, width: 80, crop: :fill  %>
+        <div class="card-product-infos">
+          <h2><%= dog.name %></h2>
+        </div>
+        <div class="dots-container">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 
-  <div class="index-button start btn-flat-white">
-    <%= link_to "Add a dog", new_dog_path %>
+  <div class="icon-container">
+      <%= link_to new_dog_path do %>
+       <i class='fas fa-plus-circle fa-align-right'></i>
+      <% end %>
   </div>
+
 </div>
 
