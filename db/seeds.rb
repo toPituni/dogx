@@ -84,8 +84,8 @@ Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true,
 puts "created #{Schedule.count} schedule"
 
 puts "creating Walks..."
-walk1 = Walk.create!(date: "05-03-2020",user: User.first)
-walk2 = Walk.create!(date:"06-03-2020", user: User.first)
+walk1 = Walk.create!(date: "08-03-2020",user: User.first)
+walk2 = Walk.create!(date:"09-03-2020", user: User.first)
 puts "created #{Walk.count} walks"
 
 puts "creating Slots..."
