@@ -15,7 +15,6 @@
 
 
 <!-- simple form add_slot_path  -->
-<%#= render 'slots/new_slot' %>
 
 <%= simple_form_for @slot, method: :post do |f|%>
   <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Select Dog' %>
@@ -23,9 +22,14 @@
   <%= f.submit "+"%>
 <% end %>
 
-<!-- this should be in partial in 'slots/new
+<!-- show the list of dogs who doesnt have todays schedule
 
 
+link_to 'Delete', manage_user_path(user), method: :delete
+<%= link_to @event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'user' do %>
+      <i class="fa fa-trash fa-2x"></i>
+   <% end %>
+--->
 
 
 
