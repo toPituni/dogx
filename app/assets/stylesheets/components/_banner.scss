@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-//   background-image: image-url("paw.svg");
+  background-image: image-url("background_dog.png");
 // // linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4),
 
 }
@@ -37,14 +37,26 @@
   margin: auto;
 }
 
+.start a {
+  color: $gray;
+}
+
 .sign-up {
   text-align: center;
   margin: auto;
-  color: $light-gray;
+  color: $gray;
+}
+
+.sign-up a {
+  color: $gray;
 }
 
 .sign-out {
   text-align: right;
+}
+
+.sign-out a {
+  color: $gray;
 }
 
 .container {
