@@ -1,6 +1,8 @@
 <div class="container">
 <div>
+  <div class="header">
   <h1><%= @dog.name %></h1>
+  </div>
 
   <ul>
     <li><%= cl_image_tag @dog.image.key, height: 100, width: 100, crop: :fill %></li>
