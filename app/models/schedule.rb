@@ -1,6 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :dog
-  after_create :make_user_walks # Run on create & update
+  after_save :make_user_walks # Run on create & update
 
   private
 

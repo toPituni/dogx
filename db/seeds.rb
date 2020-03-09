@@ -98,21 +98,21 @@ s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: t
 d5.schedule = s
 puts "created #{Schedule.count} schedule"
 
-puts "creating Walks..."
-walk1 = Walk.create!(date: "08-03-2020",user: User.first)
-walk2 = Walk.create!(date:"09-03-2020", user: User.first)
-puts "created #{Walk.count} walks"
+# puts "creating Walks..."
+# walk1 = Walk.create!(date: "08-03-2020",user: User.first)
+# walk2 = Walk.create!(date:"09-03-2020", user: User.first)
+# puts "created #{Walk.count} walks"
 
-puts "creating Slots..."
-Slot.create!(status:1, walk: walk1, dog: d2)
-Slot.create!(status:1, walk: walk1, dog: d4)
-Slot.create!(status:1, walk: walk1, dog: d5)
-Slot.create!(status:1, walk: walk2, dog: d1)
-Slot.create!(status:1, walk: walk2, dog: d2)
-Slot.create!(status:1, walk: walk2, dog: d3)
-Slot.create!(status:1, walk: walk2, dog: d5)
+# puts "creating Slots..."
+# Slot.create!(status:1, walk: walk1, dog: d2)
+# Slot.create!(status:1, walk: walk1, dog: d4)
+# Slot.create!(status:1, walk: walk1, dog: d5)
+# Slot.create!(status:1, walk: walk2, dog: d1)
+# Slot.create!(status:1, walk: walk2, dog: d2)
+# Slot.create!(status:1, walk: walk2, dog: d3)
+# Slot.create!(status:1, walk: walk2, dog: d5)
 
-puts "created #{Slot.count} slots"
+# puts "created #{Slot.count} slots"
 
 
 
