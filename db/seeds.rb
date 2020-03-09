@@ -33,8 +33,8 @@ o5 = Owner.create!(first_name: "Aurelia", last_name: "Nowak", telephone_number: 
 puts "Created #{Owner.count} Owners!"
 
 puts "Creating Dogs..."
-#binding.pry
-file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583406161/dog_seed_2_uxrrj9.png')
+
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583747385/dog2_m5hzpp.jpg')
 d1 = Dog.create!(owner: o1,
                  name: "Muffin",
                  pick_up_address: "Kremmener Str 11, Berlin",
@@ -42,7 +42,7 @@ d1 = Dog.create!(owner: o1,
                  special_requirements: "needs a long leash",
                  user_id: angie.id)
 
-d1.image.attach(io: file, filename: 'dog_seed_2_uxrrj9', content_type: 'image/png')
+d1.image.attach(io: file, filename: 'dog2_m5hzpp', content_type: 'image/jpg')
 
 file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583406178/dog_seed_5_j0vlop.jpg')
 d2 = Dog.create!(owner: o2,
@@ -63,23 +63,25 @@ d3 = Dog.create!(owner: o3,
                  user_id: angie.id)
 d3.image.attach(io: file, filename: 'iiupjeGCq8ETKHyqhLx6pzJn', content_type: 'image/jpg')
 
-file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583341356/i1iEcFJMquATzH4H6uCC8zdv.png')
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583747385/dog.5_e5kmcx.jpg')
 d4 = Dog.create!(owner: o4,
                  name: "Nino",
                  pick_up_address: "Alexanderplatz 10, Berlin",
                  breed: "Pug",
                  special_requirements: "none",
                  user_id: angie.id)
-d4.image.attach(io: file, filename: 'i1iEcFJMquATzH4H6uCC8zdv', content_type: 'image/png')
+d4.image.attach(io: file, filename: 'dog.5_e5kmcx', content_type: 'image/jpg')
 
-file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583337843/LLmWdcNnqPTrGqYg8yo1oatC.png')
+
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583747385/dog3_ms9lks.jpg')
 d5 = Dog.create!(owner: o5,
                  name: "Cookie",
                  pick_up_address: "Turmstraße 73, Berlin",
                  breed: "Cockerl Spaniel",
                  special_requirements: "none",
                  user_id: angie.id)
-d5.image.attach(io: file, filename: 'LLmWdcNnqPTrGqYg8yo1oatC', content_type: 'image/png')
+d5.image.attach(io: file, filename: 'dog3_ms9lks', content_type: 'image/jpg')
+
 
 puts "Created #{Dog.count} Dogs"
 

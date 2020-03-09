@@ -1,29 +1,30 @@
-<div class="container">
-<div>
-  <h1><%= @dog.name %></h1>
-
-  <ul>
-    <li><%= cl_image_tag @dog.image.key, height: 100, width: 100, crop: :fill %></li>
-    <li>Breed: <%= @dog.breed %></li>
-    <li>Special Requirements: <%= @dog.special_requirements %></li>
-    <h2>Owner Info:</h2>
-    <li>Owner: <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
-    <li>Address: <%= @dog.pick_up_address %></li>
-    <li>Phone: <%= @dog.owner.telephone_number %></li>
-    <li>Email: <%= @dog.owner.email %></li>
-  </ul>
-
-  <%= simple_form_for [@dog, @schedule] do |f| %>
-    <%= f.input :monday%>
-    <%= f.input :tuesday%>
-    <%= f.input :wednesday%>
-    <%= f.input :thursday%>
-    <%= f.input :friday%>
-    <%= f.submit %>
-  <% end %>
-
-  <%= link_to "Back", dogs_path %>
-  <%= link_to "Edit", edit_dog_path %>
-  <%= link_to "Delete", dog_path(@dog), method: :delete %>
+<div class="header">
+  <h1><%= @dog.name.upcase %></h1>
 </div>
+<div class="container">
+  <div class="owner-card">
+    <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
+    <ul>
+      <li><span>Breed:</span> <%= @dog.breed %></li>
+      <li><span>Special Requirements:</span> <br><%= @dog.special_requirements %><br><br></li>
+      <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
+      <li><span>Address:</span> <%= @dog.pick_up_address %></li>
+      <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
+      <li><span>Email:</span> <%= @dog.owner.email %></li>
+    </ul>
+  </div>
+
+    <%= simple_form_for [@dog, @schedule] do |f| %>
+      <%= f.input :monday%>
+      <%= f.input :tuesday%>
+      <%= f.input :wednesday%>
+      <%= f.input :thursday%>
+      <%= f.input :friday%>
+      <%= f.submit %>
+    <% end %>
+
+    <%= link_to "Back", dogs_path %>
+    <%= link_to "Edit", edit_dog_path %>
+    <%= link_to "Delete", dog_path(@dog), method: :delete %>
+  </div>
 </div>
