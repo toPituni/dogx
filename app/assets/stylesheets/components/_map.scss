@@ -4,11 +4,24 @@ margin-bottom: 50px;
 }
 
 // getting rid of the HERE MAP LOGO and Copyrightstuff
-
 .H_copyright{
   display: none;
 }
 
 .H_logo{
   display: none !important;
+}
+
+#map-instructions {
+  background-color: white;
+  padding-top: 8px;
+}
+
+#map-instructions li {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.mapDiv {
+    background-color: white;
 }
