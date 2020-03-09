@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :owners, only: [:create, :update]
   # routes for walks
   get  "/walks/:date", to: "walks#schedule", as: "walks_schedule"
-  resources :slots, only: [:new,:create]
+  resources :slots, only: [:new,:create,:destroy]
 
 
 end
