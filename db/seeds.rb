@@ -44,15 +44,15 @@ d1 = Dog.create!(owner: o1,
 
 d1.image.attach(io: file, filename: 'dog2_m5hzpp', content_type: 'image/jpg')
 
-file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583406178/dog_seed_5_j0vlop.jpg')
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583747439/TG1FN8R6erHYQS1u2DZC8uHv.jpg')
 d2 = Dog.create!(owner: o2,
-                 name: "Otis the great",
+                 name: "Otis",
                  pick_up_address: "Karl-lade-Str. 40, Berlin",
                  breed: "Chug",
                  special_requirements: "nut allergies",
                  user_id: angie.id)
 
-d2.image.attach(io: file, filename: 'dog_seed_5_j0vlop', content_type: 'image/png')
+d2.image.attach(io: file, filename: 'TG1FN8R6erHYQS1u2DZC8uHv', content_type: 'image/jpg')
 
 file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583341941/iiupjeGCq8ETKHyqhLx6pzJn.jpg')
 d3 = Dog.create!(owner: o3,
@@ -100,21 +100,21 @@ s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: t
 d5.schedule = s
 puts "created #{Schedule.count} schedule"
 
-puts "creating Walks..."
-walk1 = Walk.create!(date: "08-03-2020",user: User.first)
-walk2 = Walk.create!(date:"09-03-2020", user: User.first)
-puts "created #{Walk.count} walks"
+# puts "creating Walks..."
+# walk1 = Walk.create!(date: "08-03-2020",user: User.first)
+# walk2 = Walk.create!(date:"09-03-2020", user: User.first)
+# puts "created #{Walk.count} walks"
 
-puts "creating Slots..."
-Slot.create!(status:1, walk: walk1, dog: d2)
-Slot.create!(status:1, walk: walk1, dog: d4)
-Slot.create!(status:1, walk: walk1, dog: d5)
-Slot.create!(status:1, walk: walk2, dog: d1)
-Slot.create!(status:1, walk: walk2, dog: d2)
-Slot.create!(status:1, walk: walk2, dog: d3)
-Slot.create!(status:1, walk: walk2, dog: d5)
+# puts "creating Slots..."
+# Slot.create!(status:1, walk: walk1, dog: d2)
+# Slot.create!(status:1, walk: walk1, dog: d4)
+# Slot.create!(status:1, walk: walk1, dog: d5)
+# Slot.create!(status:1, walk: walk2, dog: d1)
+# Slot.create!(status:1, walk: walk2, dog: d2)
+# Slot.create!(status:1, walk: walk2, dog: d3)
+# Slot.create!(status:1, walk: walk2, dog: d5)
 
-puts "created #{Slot.count} slots"
+# puts "created #{Slot.count} slots"
 
 
 
