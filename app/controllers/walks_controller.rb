@@ -7,7 +7,7 @@ class WalksController < ApplicationController
 
     today = params[:date].to_date
 
-    # if i check on saturday/sunday it shows last week's. so I chaged to show next week schedule
+    # if i check on saturday/sunday it will show next week's schedule
     if today.saturday? || today.sunday?
       today = today.next_week
     end
@@ -19,7 +19,3 @@ class WalksController < ApplicationController
 end
 
 
-# <%= link_to (Date.today).strftime("%A"), walks_schedule_path(Date.today) %>
-
-# <%= link_to (Date.today+1).strftime("%A"), walks_schedule_path(Date.today+1) %>
-# without

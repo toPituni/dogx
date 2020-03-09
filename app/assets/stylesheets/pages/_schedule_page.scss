@@ -1,0 +1,25 @@
+.days_list{
+  display: inline;
+
+  // border-bottom-style: solid;
+  margin: auto 30px;
+  color: $gray;
+  a{
+    color: $gray;
+    text-decoration: none;
+    font-size: 40px;
+  }
+}
+.dogs_list{
+  color : $gray;
+  margin-right: 20px;
+}
+
+.icon_style{
+  color : $gray;
+
+}
+.name_and_icon{
+ display: flex;
+ justify-content: space-between;
+}

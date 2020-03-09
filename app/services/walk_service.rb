@@ -19,6 +19,7 @@ class WalkService
     date_range.each do |date|
       # finding weekday from date
       weekday = date.strftime("%A").downcase.to_sym
+
       walk_find = Walk.where(user_id: @user.id, date: date).first
       # creating walk for a day
       if walk_find.present?

@@ -11,6 +11,8 @@ class SlotsController < ApplicationController
     redirect_to walks_schedule_path(@slot.walk[:date])
   end
 
+
+
   private
 
   def set_slot
