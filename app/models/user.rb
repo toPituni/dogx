@@ -6,15 +6,9 @@ class User < ApplicationRecord
 
   # have a look at this
   has_many :walks
+  has_many :dogs
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-
-  after_create :make_user_walks # Run on create & update
-
-  private
-
-  def make_user_walks
-    CreateUserWalksJob.perform_later(self.id)
-  end
+  
 end
