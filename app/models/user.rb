@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_many :walks
   has_many :dogs
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+  
 end

@@ -5,6 +5,11 @@ class DogsController < ApplicationController
 
   def show
     @dog = Dog.find(params[:id])
+    if @dog.schedule.present?
+      @schedule = @dog.schedule
+    else
+      @schedule = Schedule.new
+    end
   end
 
   def new

@@ -1,14 +1,24 @@
+<div class="container">
 <div class="banner">
   <div class="banner-content">
     <h1>THIS IS DOGX</h1>
     <p>The first planning tool for dogwalkers</p>
+    <% if current_user.nil? %>
     <div class="start btn-flat-white">
       <%= link_to "SIGN UP", new_user_registration_path %>
     </div>
     <br>
-    <div class="start btn-flat-white">
-      <%= link_to "LOGIN", new_user_session_path %>
+    <br>
+     <div class="start btn-flat-white">
+      <%= link_to "LOG IN", new_user_session_path %>
     </div>
+     <% end %>
+     <% if current_user.present? %>
+    <div class="start btn-flat-white">
+      <%= link_to "GET STARTED", dogs_path %>
+    </div>
+    <% end %>
   </div>
 </div>
 
+</div>
