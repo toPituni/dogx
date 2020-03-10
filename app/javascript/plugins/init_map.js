@@ -88,7 +88,7 @@ const addDirectionsToMap = (data, map) => {
   // get the leg bit of the response
   // find the directions div with documnet.query slector
   // iterate over the response leg and add each direction to the div (AdjacentHTML)
-  console.log(data)
+console.log(data)
 const navigationCards = document.getElementById('accordionExample')
 const instructionList = document.getElementById('instructions-list')
     let count = 0;
