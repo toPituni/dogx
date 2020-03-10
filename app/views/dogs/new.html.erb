@@ -19,12 +19,11 @@
       <%= p.input :special_requirements, input_html: {class: "form-rounded"} %>
       <%= p.input :image, as: :file %>
     <% end %>
-    <%= m.submit %>
+    <%= m.submit "Add", class: "btn-flat" %>
 <% end %>
 
 <%#= simple_form_for(@dog) do |f| %>
 <!-- <h2>DOG INFO</h2> -->
-
 <!-- <h2>OWNER INFO</h2>
     <%#= f.fields_for :owners do |owner| %>
     <%#= owner.input :first_name %>
@@ -32,16 +31,11 @@
     <%#= owner.input :telephone_number %>
     <%#= owner.input :email %> -->
 <!--   <%#= f.input :first_name %>
-
   <%#= f.input :last_name %>
-
   <%#= f.input :telephone_number %>
-
   <%#= f.input :email %> -->
-
-
 <%# end %>
-
-<%= link_to "Cancel", dogs_path %>
+<%#= link_to "Cancel", dogs_path %>
 </div>
 </div>
+<br>
