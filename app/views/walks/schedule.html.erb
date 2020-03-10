@@ -1,4 +1,4 @@
-<div class = "container">
+<!-- <div class = "container"> -->
   <!--------Displaying all days  -->
   <ul class="nav nav-tabs" role="tablist">
     <% @days_from_this_week.each do |day| %>
@@ -8,7 +8,7 @@
     </li>
     <% end %>
   </ul>
-</div>
+
 
 <!---------Displaying list of dogs  -->
   <% @walk.slots.each do |st|  %>
@@ -30,22 +30,12 @@
 <!-- simple form for add_slot_path ,
 should show only the list of dogs who doesnt have todays schedule
  -->
-<br>
-<div class="container">
-  <%= simple_form_for @slot, method: :post do |f|%>
-    <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Add a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
-    <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-    <%= f.submit "+"%>
-  <% end %>
-</div>
-
-
-
-
-
-
-
-
-
-
+  <div class="container">
+    <%= simple_form_for @slot, method: :post do |f|%>
+      <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Add a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
+      <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+      <%= f.submit "+"%>
+    <% end %>
+  </div>
+<!-- </div> -->
 
