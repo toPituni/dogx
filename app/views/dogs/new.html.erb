@@ -1,21 +1,25 @@
-<div class="container">
-<h1>New Dog</h1>
+<div class="Index-header">
+  <h2>New Dog</h2>
+</div>
+<br>
 
-<%= simple_form_for @owner do |m| %>
-<h2>Owner Info:</h2>
-  <%= m.input :first_name %>
-  <%= m.input :last_name %>
-  <%= m.input :telephone_number %>
-  <%= m.input :email %>
-<h2>Dog Info:</h2>
-  <%= m.simple_fields_for :dogs do |p| %>
-    <%= p.input :name %>
-    <%= p.input :breed %>
-    <%= p.input :pick_up_address %>
-    <%= p.input :special_requirements %>
-    <%= p.input :image, as: :file %>
-  <% end %>
-  <%= m.submit %>
+<div class="container">
+  <div class="form"
+  <%= simple_form_for @owner do |m| %>
+  <h3>Owner:</h3>
+    <%= m.input :first_name, input_html: {class: "form-rounded"} %>
+    <%= m.input :last_name, input_html: {class: "form-rounded"} %>
+    <%= m.input :telephone_number, input_html: {class: "form-rounded"} %>
+    <%= m.input :email, input_html: {class: "form-rounded"} %>
+  <h3>Dog:</h3>
+    <%= m.simple_fields_for :dogs do |p| %>
+      <%= p.input :name, input_html: {class: "form-rounded"} %>
+      <%= p.input :breed, input_html: {class: "form-rounded"} %>
+      <%= p.input :pick_up_address, input_html: {class: "form-rounded"} %>
+      <%= p.input :special_requirements, input_html: {class: "form-rounded"} %>
+      <%= p.input :image, as: :file %>
+    <% end %>
+    <%= m.submit %>
 <% end %>
 
 <%#= simple_form_for(@dog) do |f| %>
@@ -39,4 +43,5 @@
 <%# end %>
 
 <%= link_to "Cancel", dogs_path %>
+</div>
 </div>

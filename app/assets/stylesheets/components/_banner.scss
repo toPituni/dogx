@@ -15,26 +15,27 @@
   margin: 0;
   color: white;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 48px;
+  font-size: 5.5rem;
   font-weight: bold;
   text-align: center;
-  margin-top: 200px;
+  margin-top: 180px;
 
 }
 
 .banner p {
-  font-size: 18px;
-  font-weight: regular;
+  font-size: 1.3rem;
+  font-weight: normal;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   text-align: center;
-  margin-bottom: 180px;
+  margin-bottom: 170px;
 }
 
 .start {
   text-align: center;
   margin: auto;
+  font-weight: bold;
 }
 
 .start a {
@@ -45,19 +46,31 @@
   text-align: center;
   margin: auto;
   color: $gray;
+  font-weight: bold;
 }
 
 .sign-up a {
   color: $gray;
 }
 
-.sign-out {
-  text-align: right;
+.start-login {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
 }
 
-.sign-out a {
-  color: $gray;
+.start-login a {
+  color: $light-gray;
 }
+
+// .sign-out {
+//   text-align: right;
+//   font-weight: bold;
+// }
+
+// .sign-out a {
+//   color: $gray;
+// }
 
 .container {
   min-height: calc(100vh - 80px);

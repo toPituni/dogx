@@ -1,14 +1,13 @@
 <div class="banner">
   <div class="banner-content">
-    <h1>THIS IS DOGX</h1>
-    <p>The planning tool for dogwalkers</p>
+    <h1>DOGX</h1>
+    <p>The tool made for dogwalkers</p>
     <% if current_user.nil? %>
     <div class="start btn-flat-white">
       <%= link_to "SIGN UP", new_user_registration_path %>
     </div>
     <br>
-    <br>
-     <div class="start btn-flat-white">
+     <div class="start-login btn-empty">
       <%= link_to "LOG IN", new_user_session_path %>
     </div>
      <% end %>
