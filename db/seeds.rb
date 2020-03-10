@@ -44,7 +44,7 @@ d1 = Dog.create!(owner: o1,
 
 d1.image.attach(io: file, filename: 'dog2_m5hzpp', content_type: 'image/jpg')
 
-file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583406178/dog_seed_5_j0vlop.jpg')
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583747439/TG1FN8R6erHYQS1u2DZC8uHv.jpg')
 d2 = Dog.create!(owner: o2,
                  name: "Otis",
                  pick_up_address: "Karl-lade-Str. 40, Berlin",
@@ -52,7 +52,7 @@ d2 = Dog.create!(owner: o2,
                  special_requirements: "nut allergies",
                  user_id: angie.id)
 
-d2.image.attach(io: file, filename: 'dog_seed_5_j0vlop', content_type: 'image/png')
+d2.image.attach(io: file, filename: 'TG1FN8R6erHYQS1u2DZC8uHv', content_type: 'image/jpg')
 
 file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583341941/iiupjeGCq8ETKHyqhLx6pzJn.jpg')
 d3 = Dog.create!(owner: o3,
