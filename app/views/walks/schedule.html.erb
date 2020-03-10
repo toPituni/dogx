@@ -19,7 +19,7 @@
         <h2><%= st.dog.name %></h2>
       </div>
         <div class="icon-container">
-          <%= link_to @slot, method: :delete do %>
+          <%= link_to slot_path(st), method: :delete do %>
           <!-- <i class="fas fa-minus-circle icon_style"></i> -->
           <i class="fas fa-times"></i>
           <% end %>
@@ -30,34 +30,14 @@
   <% end %>
 
   <!------Dropdown list of dogs for adding a new slot-->
+  <div class="container">
   <%= simple_form_for @slot, method: :post do |f|%>
-    <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ' %>
+    <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
     <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
     <%= f.submit "+" %>
    <% end %>
+  </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-=======
->>>>>>> master
-
-<!-- simple form for add_slot_path ,
-should show only the list of dogs who doesnt have todays schedule
- -->
-  <div class="container">
-    <%= simple_form_for @slot, method: :post do |f|%>
-      <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Add a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
-      <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-      <%= f.submit "+"%>
-    <% end %>
-  </div>
-<!-- </div> -->
 
