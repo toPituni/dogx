@@ -80,10 +80,13 @@ const addRouteToMap = (result, map) => {
 };
 
 const mapDiv = document.getElementById("map");
+let dogCoordinates;
+let userAddress;
+let destination;
 if (mapDiv) {
-  const dogCoordinates = JSON.parse(div.dataset.coordinates);
-  const userAddress = JSON.parse(div.dataset.userAddress);
-  const destination = JSON.parse(div.dataset.destination);
+  dogCoordinates = JSON.parse(mapDiv.dataset.coordinates);
+  userAddress = JSON.parse(mapDiv.dataset.userAddress);
+  destination = JSON.parse(mapDiv.dataset.destination);
 }
 
 const addDirectionsToMap = (data, map) => {
@@ -139,23 +142,24 @@ const fetchSequence = (map) => {
 }
 
 const createMapElement = (defaultLayers) => {
-  const map = new H.Map(document.getElementById('map'),
-    defaultLayers.vector.normal.map, {
-    center: {lat: 52.51477270923461, lng: 13.39846691425174},
-    zoom: 13,
-    pixelRatio: window.devicePixelRatio || 1
-  });
-  const ui = H.ui.UI.createDefault(map, defaultLayers);
+  if (document.getElementById('map')) {
+    const map = new H.Map(document.getElementById('map'),
+      defaultLayers.vector.normal.map, {
+      center: {lat: 52.51477270923461, lng: 13.39846691425174},
+      zoom: 13,
+      pixelRatio: window.devicePixelRatio || 1
+    });
+    const ui = H.ui.UI.createDefault(map, defaultLayers);
 
-  var mapSettings = ui.getControl('mapsettings');
-var zoom = ui.getControl('zoom');
-var scalebar = ui.getControl('scalebar');
+    var mapSettings = ui.getControl('mapsettings');
+  var zoom = ui.getControl('zoom');
+  var scalebar = ui.getControl('scalebar');
 
-  mapSettings.setAlignment('top-left');
-  zoom.setAlignment('top-left');
-  scalebar.setAlignment('top-left');
-  return map;
-
+    mapSettings.setAlignment('top-left');
+    zoom.setAlignment('top-left');
+    scalebar.setAlignment('top-left');
+    return map;
+  }
 };
 
 const initMap = () => {
