@@ -70,5 +70,31 @@ p {
   background-position: center;
   background-size: cover;
   margin: 10px;
-
 }
+
+@keyframes jump {
+  0% { top: 0; } 50% { top: 10px; } 100% { top: 0; }
+}
+
+.toni {
+  height: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  animation: jump 3s infinite;
+      img {
+      content: ‘\f0a8’;
+      font-family: ‘FontAwesome’;
+      font-size: 80px;
+      transition: .3s ease-in-out;
+  }
+    img:hover {
+      opacity: 0.7;
+      transition: .3s ease-in-out;
+  }
+}
+
+
+
