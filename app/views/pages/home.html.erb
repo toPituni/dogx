@@ -1,20 +1,51 @@
-<div class="banner">
-  <div class="banner-content">
-    <h1>DOGX</h1>
-    <p>The tool made for dogwalkers</p>
-    <% if current_user.nil? %>
-    <div class="start btn-flat-white">
-      <%= link_to "SIGN UP", new_user_registration_path %>
+<div class="main-container">
+  <!-- banner section -->
+  <div class="banner">
+    <div class="banner-content">
+      <h1>DOGX</h1>
+      <p>The tool made for dogwalkers</p>
+      <% if current_user.nil? %>
+        <div class="start btn-flat-white">
+          <%= link_to "SIGN UP", new_user_registration_path %>
+        </div>
+        <br>
+        <div class="start-login btn-empty">
+          <%= link_to "LOG IN", new_user_session_path %>
+        </div>
+      <% end %>
+      <% if current_user.present? %>
+        <div class="start btn-flat-white">
+          <%= link_to "GET STARTED", dogs_path %>
+        </div>
+      <% end %>
     </div>
-    <br>
-     <div class="start-login btn-empty">
-      <%= link_to "LOG IN", new_user_session_path %>
+  </div>
+  <!-- cards to describe the about section -->
+  <div class="about-cards">
+    <div class="about-card">
+      <%= image_tag "calendar", alt: "avatar-large", class: "avatar-large" %>
+      <div class="about-text">
+        <h2>Planning</h2>
+        <p>Digitalize your calendar and never forget to pick up a dog!</p>
+      </div>
     </div>
-     <% end %>
-     <% if current_user.present? %>
-    <div class="start btn-flat-white">
-      <%= link_to "GET STARTED", dogs_path %>
+
+    <div class="about-card">
+      <%= image_tag "map", alt: "avatar-large", class: "avatar-large" %>
+      <div class="about-text">
+        <h2>Routing</h2>
+        <p>Create the best routes and optimize your work</p>
+      </div>
     </div>
-    <% end %>
+
+    <div class="about-card">
+      <%= image_tag "guy", alt: "avatar-large", class: "avatar-large" %>
+      <div class="about-text">
+        <h2>Planning</h2>
+        <p>Digitalize your calendar and never forget to pick up a dog!</p>
+      </div>
+    </div>
   </div>
 </div>
+
+
