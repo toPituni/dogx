@@ -2,7 +2,7 @@ class WalksController < ApplicationController
 
   def schedule
     @walk = Walk.find_by date: params[:date]
-
+    @walk = Walk.new if @walk.nil?
     @slot = Slot.new(walk: @walk)
 
     today = params[:date].to_date

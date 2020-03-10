@@ -5,8 +5,12 @@
   a {
     color: $gray;
     text-decoration: none;
+    &:active {
+      color: $my-blue;
+    }
   }
 }
+
 
 .dogs_list {
   color: $gray;
@@ -16,6 +20,18 @@
 .fa-times {
   color: $light-gray;
   font-size: 20px;
+}
+
+.fa-backward {
+  color: $my-blue;
+  font-size: 20px;
+
+}
+
+.fa-forward{
+  color: $my-blue;
+  font-size: 20px;
+
 }
 // .name_and_icon{
 //  display: flex;
