@@ -34,8 +34,6 @@ class WalkService
      end
    end
 
-
-
     date_range.each do |date|
       # finding weekday from date
       weekday = date.strftime("%A").downcase.to_sym
@@ -62,6 +60,38 @@ class WalkService
     end
 
   end
+
+  def update
+    # when the scedule weekday is true
+    update_slots(1) if @schedule.monday
+    update_slots(2) if @schedule.tuesday
+    update_slots(3) if @schedule.wednesday
+    update_slots(4) if @schedule.thursday
+    update_slots(5) if @schedule.friday
+
+    # when the scedule weekday is false
+    destroy(1) unless @schedule.monday
+    destroy(2) unless @schedule.tuesday
+    destroy(3) unless @schedule.wednesday
+    destroy(4) unless @schedule.thursday
+    destroy(5) unless @schedule.friday
+
+  end
+
+  private
+
+  def destroy(date)
+    Slot.where(dog_id: @schedule.dog.id).joins(:walk).where("extract(dow from date) = ?", date).destroy_all
+  end
+
+  def update_slots(date)
+    walks = Walk.where("extract(dow from date) = ?", date)
+    walks.each do |walk|
+      Slot.create(walk_id: walk.id, dog_id: @schedule.dog.id , status: 1) unless Slot.where(walk: walk, dog: @schedule.dog.id).present?
+    end
+
+  end
+
 
 end
 
