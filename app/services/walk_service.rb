@@ -8,13 +8,31 @@ class WalkService
   end
 
   def create
-    today = Date.today
-    two_weeks_from_now = Date.today + 14
-
     # First saving date to Walk
     # creating 2 weeks range for 2 weeks walk
-    date_range = (today..two_weeks_from_now).to_a
-    date_range = date_range.reject { |date| date.saturday? || date.sunday? }
+   date_range =[]
+   # next_day = Date.today
+   next_day = Date.today.last_week
+
+   until next_day.monday?
+     next_day = (next_day - 1)
+   end
+
+   21.times do
+     if next_day.friday?
+       date_range << next_day
+       next_day = (next_day + 3)
+     elsif next_day.saturday?
+       next_day = (next_day + 2)
+       date_range << next_day
+     elsif next_day.sunday?
+       next_day = (next_day + 1)
+       date_range << next_day
+     else
+       date_range << next_day
+       next_day = (next_day + 1)
+     end
+   end
 
     date_range.each do |date|
       # finding weekday from date
@@ -42,6 +60,38 @@ class WalkService
     end
 
   end
+
+  def update
+    # when the scedule weekday is true
+    update_slots(1) if @schedule.monday
+    update_slots(2) if @schedule.tuesday
+    update_slots(3) if @schedule.wednesday
+    update_slots(4) if @schedule.thursday
+    update_slots(5) if @schedule.friday
+
+    # when the scedule weekday is false
+    destroy(1) unless @schedule.monday
+    destroy(2) unless @schedule.tuesday
+    destroy(3) unless @schedule.wednesday
+    destroy(4) unless @schedule.thursday
+    destroy(5) unless @schedule.friday
+
+  end
+
+  private
+
+  def destroy(date)
+    Slot.where(dog_id: @schedule.dog.id).joins(:walk).where("extract(dow from date) = ?", date).destroy_all
+  end
+
+  def update_slots(date)
+    walks = Walk.where("extract(dow from date) = ?", date)
+    walks.each do |walk|
+      Slot.create(walk_id: walk.id, dog_id: @schedule.dog.id , status: 1) unless Slot.where(walk: walk, dog: @schedule.dog.id).present?
+    end
+
+  end
+
 
 end
 

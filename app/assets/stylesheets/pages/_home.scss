@@ -3,3 +3,72 @@
 //   height: 88%;
 // }
 
+.main-container {
+  margin-bottom: 0px;
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+.about-cards {
+
+}
+
+.about-card {
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  color: $gray;
+  margin-top: 30px;
+}
+
+.about-text {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.about-text p {
+  font-size: 18px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  color: $medium-gray;
+}
+
+.about-text h3 {
+  color: $gray;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.about-image-calendar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: asset-url('calendar1');
+  background-position: center;
+  background-size: cover;
+  margin: 10px;
+}
+
+.about-image-map {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: asset-url('map4');
+  background-position: bottom;
+  background-size: cover;
+  margin: 10px;
+}
+
+.about-image-guy {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: asset-url('guy');
+  background-position: center;
+  background-size: cover;
+  margin: 10px;
+
+}

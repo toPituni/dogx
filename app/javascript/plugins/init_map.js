@@ -79,10 +79,12 @@ const addRouteToMap = (result, map) => {
   }
 };
 
-const div = document.getElementById("map");
-const dogCoordinates = JSON.parse(div.dataset.coordinates);
-const userAddress = JSON.parse(div.dataset.userAddress);
-const destination = JSON.parse(div.dataset.destination);
+const mapDiv = document.getElementById("map");
+if (mapDiv) {
+  const dogCoordinates = JSON.parse(div.dataset.coordinates);
+  const userAddress = JSON.parse(div.dataset.userAddress);
+  const destination = JSON.parse(div.dataset.destination);
+}
 
 const addDirectionsToMap = (data, map) => {
   const navigationCards = document.getElementById('accordionExample')

@@ -76,12 +76,56 @@ d4.image.attach(io: file, filename: 'dog.5_e5kmcx', content_type: 'image/jpg')
 file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583747385/dog3_ms9lks.jpg')
 d5 = Dog.create!(owner: o5,
                  name: "Cookie",
-                 pick_up_address: "Turmstraße 73, Berlin",
+                 pick_up_address: "Turmstraße 91, 10551 Berlin",
                  breed: "Cockerl Spaniel",
                  special_requirements: "none",
                  user_id: angie.id)
 d5.image.attach(io: file, filename: 'dog3_ms9lks', content_type: 'image/jpg')
 
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583833246/husky.jpg')
+d6 = Dog.create!(owner: o1,
+                 name: "Karl",
+                 pick_up_address: "Schützenstraße 11, 10117 Berlin",
+                 breed: "Husky",
+                 special_requirements: "none",
+                 user_id: angie.id)
+d6.image.attach(io: file, filename: 'husky', content_type: 'image/jpg')
+
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583833246/labrador.jpg')
+d7 = Dog.create!(owner: o2,
+                 name: "Hugo",
+                 pick_up_address: "Leipziger Str. 112, 10117 Berlin",
+                 breed: "Labrador",
+                 special_requirements: "none",
+                 user_id: angie.id)
+d7.image.attach(io: file, filename: 'labrador', content_type: 'image/jpg')
+
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583833245/german_shepherd.jpg')
+d8 = Dog.create!(owner: o3,
+                 name: "Buddy",
+                 pick_up_address: "Mauerstraße 51, 10117 Berlin",
+                 breed: "German shepherd",
+                 special_requirements: "none",
+                 user_id: angie.id)
+d8.image.attach(io: file, filename: 'german_shepherd', content_type: 'image/jpg')
+
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583833245/dog.jpg')
+d9 = Dog.create!(owner: o4,
+                 name: "Charlie",
+                 pick_up_address: "Dorotheenstraße 94, 10117 Berlin",
+                 breed: "Dog",
+                 special_requirements: "none",
+                 user_id: angie.id)
+d9.image.attach(io: file, filename: 'dog', content_type: 'image/jpg')
+
+file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583833245/labradoodle.jpg')
+d10 = Dog.create!(owner: o5,
+                 name: "Milo",
+                 pick_up_address: "Novalisstraße 11, 10115 Berlin",
+                 breed: "Labradoodle",
+                 special_requirements: "none",
+                 user_id: angie.id)
+d10.image.attach(io: file, filename: 'labradoodle', content_type: 'image/jpg')
 
 puts "Created #{Dog.count} Dogs"
 
@@ -98,6 +142,16 @@ s = Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: t
 d4.schedule = s
 s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true, friday: true, dog:d5)
 d5.schedule = s
+s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d6)
+d6.schedule = s
+s = Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: true, friday: true, dog:d7)
+d7.schedule = s
+s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d8)
+d8.schedule = s
+s = Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: true, friday: false, dog:d9)
+d9.schedule = s
+s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true, friday: true, dog:d10)
+d10.schedule = s
 puts "created #{Schedule.count} schedule"
 
 # puts "creating Walks..."
@@ -115,6 +169,4 @@ puts "created #{Schedule.count} schedule"
 # Slot.create!(status:1, walk: walk2, dog: d5)
 
 # puts "created #{Slot.count} slots"
-
-
 
