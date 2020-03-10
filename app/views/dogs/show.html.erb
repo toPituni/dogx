@@ -15,15 +15,17 @@
       <li><span>Email:</span> <%= @dog.owner.email %></li>
     </ul>
   </div>
-
-    <%= simple_form_for [@dog, @schedule], html: { class: "form-inline"} do |f| %>
-      <%= f.input :monday, label: "MON", input_html: { class: 'input_class' }%>
-      <%= f.input :tuesday, label: "TUE", input_html: { class: 'input_class' }%>
-      <%= f.input :wednesday, label: "WED", input_html: { class: 'input_class' }%>
-      <%= f.input :thursday, label: "THU", input_html: { class: 'input_class' }%>
-      <%= f.input :friday, label: "FRI", input_html: { class: 'input_class' }%>
-      <%= f.submit %>
-    <% end %>
+    <div>
+      <h3><%= @dog.name %> walks with you on:</h3>
+      <%= simple_form_for [@dog, @schedule], html: { class: "form-inline"} do |f| %>
+        <%= f.input :monday, label: "MON", label_html: { class: 'btn-day' }%>
+        <%= f.input :tuesday, label: "TUE", label_html: { class: 'btn-day' }%>
+        <%= f.input :wednesday, label: "WED", label_html: { class: 'btn-day' }%>
+        <%= f.input :thursday, label: "THU", label_html: { class: 'btn-day' }%>
+        <%= f.input :friday, label: "FRI", label_html: { class: 'btn-day' }%>
+        <%= button_tag type:'submit' do %> <i class="far fa-save"></i> <% end %>
+      <% end %>
+    </div>
 
     <%= link_to "Back", dogs_path %>
     <%= link_to "Edit", edit_dog_path %>
