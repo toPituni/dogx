@@ -84,6 +84,36 @@ const dogCoordinates = JSON.parse(div.dataset.coordinates);
 const userAddress = JSON.parse(div.dataset.userAddress);
 const destination = JSON.parse(div.dataset.destination);
 
+const addDirectionsToMap = (data, map) => {
+  // get the leg bit of the response
+  // find the directions div with documnet.query slector
+  // iterate over the response leg and add each direction to the div (AdjacentHTML)
+  console.log(data)
+const navigationCards = document.getElementById('accordionExample')
+const instructionList = document.getElementById('instructions-list')
+    let count = 0;
+  console.log(data.response.route[0].leg)
+  data.response.route[0].leg.map((legs) => {
+    // create Card for each leg
+
+    let count2 = count++;
+    navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count2}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target=collapse${count2} aria-expanded="true" aria-controls="collapse${count2}">Route for destination</button></h5></div>`)
+    // // add position.instruction to the list inside the card
+    let listString = []
+    navigationCards.insertAdjacentHTML("beforeend", `<div id="collapse${count2}" class="collapse show" aria-labelledby="heading${count2}" data-parent="#accordionExample"><div class="card-body"><ul id='instructions-list'><h3>Navigation Instructions:</h3></ul></div></div></div>`)
+    legs.maneuver.forEach((leg) => {
+
+        // listString.push(`<li>${position.instruction}</li>`);
+      listString.push(`${leg.instruction}`);
+        // console.log(listString)
+    });
+
+    navigationCards.insertAdjacentHTML("beforeend", `<li>${listString.join(" ")}</li>`)
+
+  });
+};
+
+
 const fetchRoute = (data, map) => {
   const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA";
   let routeEndpoint = `https://route.ls.hereapi.com/routing/7.2/calculateroute.json?waypoint0=${userAddress.join(',')}`;
@@ -95,8 +125,8 @@ const fetchRoute = (data, map) => {
   fetch(routeEndpoint)
   .then(response => response.json())
   .then((data) => {
-    console.log(data);
     addRouteToMap(data, map);
+    addDirectionsToMap(data, map);
   });
 }
 

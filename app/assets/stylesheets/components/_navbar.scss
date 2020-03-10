@@ -8,15 +8,29 @@
   width: 100%;
   position: fixed;
   text-align: center;
+  border: 2px solid #169FDA;
+  border-radius: 3px;
 }
 
 .button {
+  height: 80px;
   width: 25%;
+  padding-top: 16px;
+  a, i{
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
+  color: black;
+  }
 }
 
-.button a {
-  color: black;
+// .button a {
+//   color: black;
+// }
+
+.button:hover {
+  background-color: #169FDA;
+  a, i {
+    color: white;
+  }
 }

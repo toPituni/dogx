@@ -1,4 +1,4 @@
-<div class = "container">
+<!-- <div class = "container"> -->
   <!--------Displaying all days  -->
   <ul class="nav nav-tabs" role="tablist">
     <% @days_from_this_week.each do |day| %>
@@ -8,19 +8,27 @@
     </li>
     <% end %>
   </ul>
-  <!-------Displaying all dogs to walk   -->
+
+
+<!---------Displaying list of dogs  -->
   <% @walk.slots.each do |st|  %>
     <div class = "card-product">
      <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
-     <div class="name_and_icon">
-      <h2><%= st.dog.name %></h2>
 
-      <%= link_to slot_path(st), method: :delete do %>
-      <i class="fas fa-minus-circle icon_style"></i>
-       <% end %>
+      <div class="card-product-infos">
+        <h2><%= st.dog.name %></h2>
+      </div>
+        <div class="icon-container">
+          <%= link_to @slot, method: :delete do %>
+          <!-- <i class="fas fa-minus-circle icon_style"></i> -->
+          <i class="fas fa-times"></i>
+          <% end %>
+        </div>
+      </div>
+
     </div>
-  </div>
   <% end %>
+
   <!------Dropdown list of dogs for adding a new slot-->
   <%= simple_form_for @slot, method: :post do |f|%>
     <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ' %>
@@ -38,5 +46,18 @@
 
 
 
+=======
+>>>>>>> master
 
+<!-- simple form for add_slot_path ,
+should show only the list of dogs who doesnt have todays schedule
+ -->
+  <div class="container">
+    <%= simple_form_for @slot, method: :post do |f|%>
+      <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Add a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
+      <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+      <%= f.submit "+"%>
+    <% end %>
+  </div>
+<!-- </div> -->
 
