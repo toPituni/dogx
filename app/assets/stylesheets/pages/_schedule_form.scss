@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  justify-content: space-around;
+}
+
+// input[type="checkbox"]:active {
+//   // opacity: 0;
+//   color: pink;
+// }
+
+
+.form-check {
+  margin: 20px 0;
+  padding-left: 0px;
+}
+
+.form-check-input {
+  visibility: hidden;
+}
+
+.btn-day {
+    border: 1px solid $my-blue;
+    padding: 15px;
+    border-radius: 3px;
+  &.active {
+    color: white !important;
+    background-color: $my-blue;
+  }
+}
+
+h3 {
+  background-color: $my-blue;
+  color: white;
+  padding: 5px;
+  text-align: center;
+}
