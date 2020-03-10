@@ -1,21 +1,19 @@
-.days_list{
-  display: inline;
-
-  // border-bottom-style: solid;
-  margin: auto 30px;
-  color: $gray;
-  a{
+.days_list {
+  display: flex;
+  justify-content: space-evenly;
+  color: $my-blue;
+  a {
     color: $gray;
     text-decoration: none;
-    font-size: 40px;
   }
 }
-.dogs_list{
+
+.dogs_list {
   color: $gray;
   margin-right: 20px;
 }
 
-.fa-times{
+.fa-times {
   color: $light-gray;
   font-size: 20px;
 }
@@ -24,7 +22,7 @@
 //  justify-content: space-between;
 // }
 
-.icon-container{
+.icon-container {
   margin-right: 30px;
   margin-left: auto;
 }

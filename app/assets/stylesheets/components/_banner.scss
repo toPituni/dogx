@@ -73,5 +73,6 @@
 // }
 
 .container {
-  height: 89vh;
+  min-height: calc(100vh - 80px);
+  margin-bottom: 80px;
 }

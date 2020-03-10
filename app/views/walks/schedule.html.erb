@@ -1,21 +1,14 @@
-
-<!-- <div class = "container"> -->
-<!-- <div class="Index-header">
-  <h2> Schedule </h2>
+<div class = "container">
+  <!--------Displaying all days  -->
+  <ul class="nav nav-tabs" role="tablist">
+    <% @days_from_this_week.each do |day| %>
+    <li class="nav-item days_list">
+      <% css_class = day == Date.parse(params[:date]) ? "active" : "" %>
+      <%= link_to day.strftime("%A").first(3), walks_schedule_path(day), class: "nav-link #{css_class}"%>
+    </li>
+    <% end %>
+  </ul>
 </div>
- -->
-
-<!--------Displaying weekdays  -->
-
-  <% @days_from_this_week.each do |day| %>
-
-    <div class ="days_list" >
-      <%= link_to day.strftime("%A").first(3), walks_schedule_path(day), class: "font-weight-bold" %>
-       <i class="far fa-horizontal-rule"></i>
-
-    </div>
-  <% end %>
-
 
 <!---------Displaying list of dogs  -->
   <% @walk.slots.each do |st|  %>
@@ -34,8 +27,6 @@
     </div>
   <% end %>
 
-
-
 <!-- simple form for add_slot_path ,
 should show only the list of dogs who doesnt have todays schedule
  -->
@@ -48,13 +39,9 @@ should show only the list of dogs who doesnt have todays schedule
   <% end %>
 </div>
 
-<!--
 
-link_to 'Delete', manage_user_path(user), method: :delete
-<%= link_to @slot, method: :delete do %>
-      <i class="fa fa-trash fa-2x"></i>
-   <% end %>
---->
+
+
 
 
 
