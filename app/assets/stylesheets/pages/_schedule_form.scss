@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  justify-content: space-around;
+}
+
+input[type="checkbox"]:active {
+  // opacity: 0;
+  color: pink;
+}
+
+
+.form-check {
+  padding: 10px;
+  border: 1px solid blue;
+}

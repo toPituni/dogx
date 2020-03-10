@@ -16,12 +16,12 @@
     </ul>
   </div>
 
-    <%= simple_form_for [@dog, @schedule] do |f| %>
-      <%= f.input :monday%>
-      <%= f.input :tuesday%>
-      <%= f.input :wednesday%>
-      <%= f.input :thursday%>
-      <%= f.input :friday%>
+    <%= simple_form_for [@dog, @schedule], html: { class: "form-inline"} do |f| %>
+      <%= f.input :monday, label: "MON", input_html: { class: 'input_class' }%>
+      <%= f.input :tuesday, label: "TUE", input_html: { class: 'input_class' }%>
+      <%= f.input :wednesday, label: "WED", input_html: { class: 'input_class' }%>
+      <%= f.input :thursday, label: "THU", input_html: { class: 'input_class' }%>
+      <%= f.input :friday, label: "FRI", input_html: { class: 'input_class' }%>
       <%= f.submit %>
     <% end %>
 
