@@ -1,11 +1,23 @@
 .days_list {
   display: flex;
   justify-content: space-evenly;
-  color: $my-blue;
-  a {
+  align-items: center;
+  .day-item .nav-link {
     color: $gray;
     text-decoration: none;
+    font-size: 18px;
+    &.active {
+      background-color: $my-blue;
+      color: white;
+    }
   }
+}
+
+h6{
+  text-align: center;
+  font-weight: bold;
+  color: $my-blue;
+  font-size: 20px;
 }
 
 .dogs_list {
@@ -17,10 +29,18 @@
   color: $light-gray;
   font-size: 20px;
 }
-// .name_and_icon{
-//  display: flex;
-//  justify-content: space-between;
-// }
+
+.fa-chevron-left {
+  color: $my-blue;
+  font-size: 20px;
+
+}
+
+.fa-chevron-right{
+  color: $my-blue;
+  font-size: 20px;
+
+}
 
 .icon-container {
   margin-right: 30px;
