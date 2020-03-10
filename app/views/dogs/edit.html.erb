@@ -1,22 +1,24 @@
-<div class="container">
-<h1>Edit Profile</h1>
-
-<%= simple_form_for @owner do |m| %>
-<h2>Owner Info:</h2>
-  <%= m.input :first_name %>
-  <%= m.input :last_name %>
-  <%= m.input :telephone_number %>
-  <%= m.input :email %>
-<h2>Dog Info:</h2>
-  <%= m.simple_fields_for :dogs do |p| %>
-    <%= p.input :name %>
-    <%= p.input :breed %>
-    <%= p.input :pick_up_address %>
-    <%= p.input :special_requirements %>
-    <%= p.input :image, as: :file %>
-  <% end %>
-  <%= m.submit "Update"%>
-<% end %>
-
-<%= link_to "Cancel", dog_path(@dog.id) %>
+<div class="main-container">
+  <div class="container">
+    <h1>Edit Profile</h1>
+    <%= simple_form_for @owner do |m| %>
+      <h2>Owner Info:</h2>
+        <%= m.input :first_name %>
+        <%= m.input :last_name %>
+        <%= m.input :telephone_number %>
+        <%= m.input :email %>
+      <h2>Dog Info:</h2>
+        <%= m.simple_fields_for :dogs do |p| %>
+          <%= p.input :name %>
+          <%= p.input :breed %>
+          <%= p.input :pick_up_address %>
+          <%= p.input :special_requirements %>
+          <%= p.input :image, as: :file %>
+        <% end %>
+        <%= m.submit "Update"%>
+    <% end %>
+    <div class="cancel-btn">
+      <%= link_to "Cancel", dog_path(@dog.id) %>
+    </div>
+  </div>
 </div>

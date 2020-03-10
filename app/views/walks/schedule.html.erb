@@ -1,43 +1,47 @@
-<!-- <div class = "container"> -->
-  <!--------Displaying all days  -->
-  <ul class="nav nav-tabs" role="tablist">
-    <% @days_from_this_week.each do |day| %>
-    <li class="nav-item days_list">
-      <% css_class = day == Date.parse(params[:date]) ? "active" : "" %>
-      <%= link_to day.strftime("%A").first(3), walks_schedule_path(day), class: "nav-link #{css_class}"%>
-    </li>
-    <% end %>
-  </ul>
 
-
-<!---------Displaying list of dogs  -->
-  <% @walk.slots.each do |st|  %>
-    <div class = "card-product">
-     <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
-
-      <div class="card-product-infos">
-        <h2><%= st.dog.name %></h2>
-      </div>
-        <div class="icon-container">
-          <%= link_to slot_path(st), method: :delete do %>
-          <!-- <i class="fas fa-minus-circle icon_style"></i> -->
-          <i class="fas fa-times"></i>
-          <% end %>
+<div class="main-container">
+    <!--------Displaying all days  -->
+  <div class="day-tabs">
+   <h6> <%=  @days_from_this_week[0].strftime("%d.%m") %> - <%=  @days_from_this_week[4].strftime("%d.%m") %></h6>
+    <ul class="nav nav-tabs days_list" role="tablist">
+      <%= link_to walks_schedule_path(params[:date].to_date.last_week) do %><i class="fas fa-chevron-left"></i><% end %>
+        <% @days_from_this_week.each do |day| %>
+        <li class="nav-item day-item">
+          <% css_class = day == Date.parse(params[:date]) ? "active" : "" %>
+          <%= link_to day.strftime("%A").first(3), walks_schedule_path(day), class: "nav-link #{css_class}"%>
+        </li>
+        <% end %>
+      <%= link_to walks_schedule_path(params[:date].to_date.next_week) do %><i class="fas fa-chevron-right"></i><% end %>
+    </ul>
+  </div>
+  <br>
+  <!---------Displaying list of dogs  -->
+  <div class="dog-slots">
+    <% if @walk %>
+      <% @slots.each do |st|  %>
+        <div class = "card-product">
+          <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
+          <div class="card-product-infos">
+            <h2><%= st.dog.name %></h2>
+          </div>
+          <div class="icon-container">
+            <%= link_to slot_path(st), method: :delete do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+          </div>
         </div>
-      </div>
-
-    </div>
-  <% end %>
-
+      <% end %>
+    <% end %>
+  </div>
+  <br>
   <!------Dropdown list of dogs for adding a new slot-->
-  <div class="container">
-  <%= simple_form_for @slot, method: :post do |f|%>
-    <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
-    <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-    <%= f.submit "+" %>
-   <% end %>
+  <div class="new-slot-container">
+    <%= simple_form_for @slot, method: :post, wrapper: :inline_form, html: { class: 'form-inline' } do |f|%>
+      <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
+      <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+      <%= button_tag type: 'submit' do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    <% end %>
   </div>
 </div>
-
-
-

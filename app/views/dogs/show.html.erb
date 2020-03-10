@@ -1,22 +1,25 @@
-<div class="header">
-  <h1><%= @dog.name.upcase %></h1>
-</div>
-<div class="container">
-  <div class="owner-card">
-    <div class="center-avatar">
-    <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
-    </div>
-    <ul>
-      <li><span>Breed:</span> <%= @dog.breed %></li>
-      <li><span>Notes:</span> <%= @dog.special_requirements %><br><br></li>
-      <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
-      <li><span>Address:</span> <%= @dog.pick_up_address %></li>
-      <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
-      <li><span>Email:</span> <%= @dog.owner.email %></li>
-    </ul>
+<div class="main-container">
+  <div class="header">
+    <h1><%= @dog.name.upcase %></h1>
   </div>
-    <div>
-      <h3><%= @dog.name %> walks with you on:</h3>
+
+  <div class="container">
+    <div class="owner-card">
+      <div class="center-avatar">
+        <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
+      </div>
+      <ul class="dog-info">
+        <li><span>Breed:</span> <%= @dog.breed %></li>
+        <li><span>Notes:</span> <%= @dog.special_requirements %><br><br></li>
+        <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
+        <li><span>Address:</span> <%= @dog.pick_up_address %></li>
+        <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
+        <li><span>Email:</span> <%= @dog.owner.email %></li>
+      </ul>
+    </div>
+    
+    <h3><%= @dog.name %> walks with you on:</h3>
+  
       <%= simple_form_for [@dog, @schedule], html: { class: "form-inline"} do |f| %>
         <%= f.input :monday, label: "MON", label_html: { class: 'btn-day' }%>
         <%= f.input :tuesday, label: "TUE", label_html: { class: 'btn-day' }%>
@@ -25,10 +28,12 @@
         <%= f.input :friday, label: "FRI", label_html: { class: 'btn-day' }%>
         <%= button_tag type:'submit' do %> <i class="far fa-save"></i> <% end %>
       <% end %>
+    
+      <div class="dog-links">
+        <%= link_to "Back", dogs_path %>
+        <%= link_to "Edit", edit_dog_path %>
+        <%= link_to "Delete", dog_path(@dog), method: :delete %>
+      </div>
     </div>
-
-    <%= link_to "Back", dogs_path %>
-    <%= link_to "Edit", edit_dog_path %>
-    <%= link_to "Delete", dog_path(@dog), method: :delete %>
   </div>
 </div>
