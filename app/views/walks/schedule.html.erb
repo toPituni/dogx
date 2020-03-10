@@ -17,17 +17,16 @@
 
       <%= link_to slot_path(st), method: :delete do %>
       <i class="fas fa-minus-circle icon_style"></i>
-
        <% end %>
     </div>
   </div>
   <% end %>
-  <!------Dropdown list of dogs for adding a slot  -->
+  <!------Dropdown list of dogs for adding a new slot-->
   <%= simple_form_for @slot, method: :post do |f|%>
-    <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Create a new slot for ' %>
+    <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ' %>
     <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-    <%= f.submit "+"%>
-  <% end %>
+    <%= f.submit "+" %>
+   <% end %>
 </div>
 
 
