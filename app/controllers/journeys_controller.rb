@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
     @map = true
     @user_coordinates = [current_user.latitude, current_user.longitude]
     #  find walk from todays date
-    @walk = Walk.where(date: Date.today) #NEEDS TO BE CHANGED!! SHOULD BE TODAY AND NOT YESTERDAY
+    @walk = Walk.where(date: Date.today).first
     @slots = @walk.slots
     coords = []
     @dog_coordinates = {}

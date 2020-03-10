@@ -1,29 +1,37 @@
+<div class = "container">
+  <!--------Displaying all days  -->
+  <ul class="nav nav-tabs" role="tablist">
+    <% @days_from_this_week.each do |day| %>
+    <li class="nav-item days_list">
+      <% css_class = day == Date.parse(params[:date]) ? "active" : "" %>
+      <%= link_to day.strftime("%A").first(3), walks_schedule_path(day), class: "nav-link #{css_class}"%>
+    </li>
+    <% end %>
+  </ul>
+  <!-------Displaying all dogs to walk   -->
+  <% @walk.slots.each do |st|  %>
+    <div class = "card-product">
+     <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
+     <div class="name_and_icon">
+      <h2><%= st.dog.name %></h2>
 
-<p> Schedule</p>
+      <%= link_to slot_path(st), method: :delete do %>
+      <i class="fas fa-minus-circle icon_style"></i>
+
+       <% end %>
+    </div>
+  </div>
+  <% end %>
+  <!------Dropdown list of dogs for adding a slot  -->
+  <%= simple_form_for @slot, method: :post do |f|%>
+    <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Create a new slot for ' %>
+    <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+    <%= f.submit "+"%>
+  <% end %>
+</div>
 
 
 
-
-<% @days_from_this_week.each do |day| %>
-  <%= link_to day.strftime("%A"), walks_schedule_path(day)%>
-<% end %>
-
-
-<% @walk.slots.each do |st|  %>
-  <p> <%= st.dog.name %> </p>
-<% end %>
-
-
-<!-- simple form add_slot_path  -->
-<%#= render 'slots/new_slot' %>
-
-<%= simple_form_for @slot, method: :post do |f|%>
-  <%= f.association :dog, collection: Dog.all.order(:name),prompt: 'Select Dog' %>
-  <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-  <%= f.submit "+"%>
-<% end %>
-
-<!-- this should be in partial in 'slots/new
 
 
 
