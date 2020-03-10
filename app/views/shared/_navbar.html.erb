@@ -1,6 +1,10 @@
-<div class="navbar">
-  <div class="button"><i class="fas fa-calendar-alt"></i><br><%= link_to "Schedule", walks_schedule_path(Date.today)%></div>
-  <div class="button"><i class="fas fa-map-marker-alt"></i><br><%= link_to "Route", map_path %></div>
-  <div class="button"><i class="fas fa-paw"></i><br><%= link_to "MyDogx", dogs_path %></div>
-  <div class="button"><i class="fas fa-user"></i><br><%= link_to "Profile", edit_user_registration_path %></div>
+<div class="navbar-div">
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light main-nav">
+       <%= link_to walks_schedule_path(Date.today), :class => current_class?(walks_schedule_path(Date.today)) do %> <i class="fas fa-calendar-alt fa-2x"></i> <% end%>
+        <%= link_to map_path, :class => current_class?(map_path) do %> <i class="fas fa-map-marker-alt fa-2x"></i> <% end %>
+        <%= link_to dogs_path, :class => current_class?(dogs_path) do %> <i class="fas fa-paw fa-2x"></i> <% end %>
+        <%= link_to edit_user_registration_path, :class => current_class?(edit_user_registration_path) do %> <i class="fas fa-user fa-2x"></i> <% end %>
+</nav>
 </div>
+
+
