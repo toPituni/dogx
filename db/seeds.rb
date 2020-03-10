@@ -46,7 +46,7 @@ d1.image.attach(io: file, filename: 'dog2_m5hzpp', content_type: 'image/jpg')
 
 file = URI.open('https://res.cloudinary.com/batch371/image/upload/v1583406178/dog_seed_5_j0vlop.jpg')
 d2 = Dog.create!(owner: o2,
-                 name: "Otis the great",
+                 name: "Otis",
                  pick_up_address: "Karl-lade-Str. 40, Berlin",
                  breed: "Chug",
                  special_requirements: "nut allergies",
