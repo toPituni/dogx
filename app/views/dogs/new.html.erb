@@ -1,41 +1,27 @@
-<div class="Index-header">
-  <h2>New Dog</h2>
+<div class="main-container">
+  <div class="index-header">
+    <h2>New Dog</h2>
+  </div>
+  <br>
+  <div class="container">
+    <div class="form">
+      <%= simple_form_for @owner do |m| %>
+        <h3>Owner:</h3>
+          <%= m.input :first_name, input_html: {class: "form-rounded"} %>
+          <%= m.input :last_name, input_html: {class: "form-rounded"} %>
+          <%= m.input :telephone_number, input_html: {class: "form-rounded"} %>
+          <%= m.input :email, input_html: {class: "form-rounded"} %>
+        <h3>Dog:</h3>
+          <%= m.simple_fields_for :dogs do |p| %>
+            <%= p.input :name, input_html: {class: "form-rounded"} %>
+            <%= p.input :breed, input_html: {class: "form-rounded"} %>
+            <%= p.input :pick_up_address, input_html: {class: "form-rounded"} %>
+            <%= p.input :special_requirements, input_html: {class: "form-rounded"} %>
+            <%= p.input :image, as: :file %>
+          <% end %>
+          <%= m.submit "Add", class: "btn btn-flat" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<br>
 
-<div class="container">
-  <div class="form"
-  <%= simple_form_for @owner do |m| %>
-  <h3>Owner:</h3>
-    <%= m.input :first_name, input_html: {class: "form-rounded"} %>
-    <%= m.input :last_name, input_html: {class: "form-rounded"} %>
-    <%= m.input :telephone_number, input_html: {class: "form-rounded"} %>
-    <%= m.input :email, input_html: {class: "form-rounded"} %>
-  <h3>Dog:</h3>
-    <%= m.simple_fields_for :dogs do |p| %>
-      <%= p.input :name, input_html: {class: "form-rounded"} %>
-      <%= p.input :breed, input_html: {class: "form-rounded"} %>
-      <%= p.input :pick_up_address, input_html: {class: "form-rounded"} %>
-      <%= p.input :special_requirements, input_html: {class: "form-rounded"} %>
-      <%= p.input :image, as: :file %>
-    <% end %>
-    <%= m.submit "Add", class: "btn-flat" %>
-<% end %>
-
-<%#= simple_form_for(@dog) do |f| %>
-<!-- <h2>DOG INFO</h2> -->
-<!-- <h2>OWNER INFO</h2>
-    <%#= f.fields_for :owners do |owner| %>
-    <%#= owner.input :first_name %>
-    <%#= owner.input :last_name %>
-    <%#= owner.input :telephone_number %>
-    <%#= owner.input :email %> -->
-<!--   <%#= f.input :first_name %>
-  <%#= f.input :last_name %>
-  <%#= f.input :telephone_number %>
-  <%#= f.input :email %> -->
-<%# end %>
-<%#= link_to "Cancel", dogs_path %>
-</div>
-</div>
-<br>

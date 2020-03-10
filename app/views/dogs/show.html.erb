@@ -1,32 +1,34 @@
-<div class="header">
-  <h1><%= @dog.name.upcase %></h1>
-</div>
-<div class="container">
-  <div class="owner-card">
-    <div class="center-avatar">
-    <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
-    </div>
-    <ul>
-      <li><span>Breed:</span> <%= @dog.breed %></li>
-      <li><span>Notes:</span> <%= @dog.special_requirements %><br><br></li>
-      <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
-      <li><span>Address:</span> <%= @dog.pick_up_address %></li>
-      <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
-      <li><span>Email:</span> <%= @dog.owner.email %></li>
-    </ul>
+<div class="main-container">
+  <div class="header">
+    <h1><%= @dog.name.upcase %></h1>
   </div>
-
-    <%= simple_form_for [@dog, @schedule] do |f| %>
-      <%= f.input :monday%>
-      <%= f.input :tuesday%>
-      <%= f.input :wednesday%>
-      <%= f.input :thursday%>
-      <%= f.input :friday%>
-      <%= f.submit %>
-    <% end %>
-
-    <%= link_to "Back", dogs_path %>
-    <%= link_to "Edit", edit_dog_path %>
-    <%= link_to "Delete", dog_path(@dog), method: :delete %>
+  <div class="container">
+    <div class="owner-card">
+      <div class="center-avatar">
+        <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
+      </div>
+      <ul class="dog-info">
+        <li><span>Breed:</span> <%= @dog.breed %></li>
+        <li><span>Notes:</span> <%= @dog.special_requirements %><br><br></li>
+        <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
+        <li><span>Address:</span> <%= @dog.pick_up_address %></li>
+        <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
+        <li><span>Email:</span> <%= @dog.owner.email %></li>
+      </ul>
+    </div>
+      <%= simple_form_for [@dog, @schedule] do |f| %>
+        <%= f.input :monday%>
+        <%= f.input :tuesday%>
+        <%= f.input :wednesday%>
+        <%= f.input :thursday%>
+        <%= f.input :friday%>
+        <%= f.submit %>
+      <% end %>
+      <div class="dog-links">
+        <%= link_to "Back", dogs_path %>
+        <%= link_to "Edit", edit_dog_path %>
+        <%= link_to "Delete", dog_path(@dog), method: :delete %>
+      </div>
+    </div>
   </div>
 </div>
