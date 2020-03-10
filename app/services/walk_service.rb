@@ -8,13 +8,33 @@ class WalkService
   end
 
   def create
-    today = Date.today
-    two_weeks_from_now = Date.today + 14
-
     # First saving date to Walk
     # creating 2 weeks range for 2 weeks walk
-    date_range = (today..two_weeks_from_now).to_a
-    date_range = date_range.reject { |date| date.saturday? || date.sunday? }
+   date_range =[]
+   # next_day = Date.today
+   next_day = Date.today.last_week
+
+   until next_day.monday?
+     next_day = (next_day - 1)
+   end
+
+   21.times do
+     if next_day.friday?
+       date_range << next_day
+       next_day = (next_day + 3)
+     elsif next_day.saturday?
+       next_day = (next_day + 2)
+       date_range << next_day
+     elsif next_day.sunday?
+       next_day = (next_day + 1)
+       date_range << next_day
+     else
+       date_range << next_day
+       next_day = (next_day + 1)
+     end
+   end
+
+
 
     date_range.each do |date|
       # finding weekday from date

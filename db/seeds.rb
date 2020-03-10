@@ -170,5 +170,3 @@ puts "created #{Schedule.count} schedule"
 
 # puts "created #{Slot.count} slots"
 
-
-
