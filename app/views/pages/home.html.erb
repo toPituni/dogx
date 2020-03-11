@@ -4,20 +4,26 @@
     <div class="banner-content">
       <h1>DOGX</h1>
       <p>The tool made for dogwalkers</p>
-      <% if current_user.nil? %>
-        <div class="start btn-flat-white">
-          <%= link_to "SIGN UP", new_user_registration_path %>
+
+        <% if current_user.nil? %>
+        <div class="button-container">
+          <div class="start btn-flat-white">
+            <%= link_to "SIGN UP", new_user_registration_path %>
+          </div>
+          <br>
+          <div class="start-login btn-empty">
+            <%= link_to "LOG IN", new_user_session_path %>
+          </div>
+          </div>
+        <% end %>
+        <% if current_user.present? %>
+        <div class="single-button">
+          <div class="start btn-flat-white">
+            <%= link_to "LET'S GO!", walks_schedule_path(@date) %>
+          </div>
         </div>
-        <br>
-        <div class="start-login btn-empty">
-          <%= link_to "LOG IN", new_user_session_path %>
-        </div>
-      <% end %>
-      <% if current_user.present? %>
-        <div class="start btn-flat-white">
-          <%= link_to "LET'S GO!", walks_schedule_path(@date) %>
-        </div>
-      <% end %>
+        <% end %>
+
       <div id="toni">
         <%= image_tag 'down-arrow.svg', alt: 'down-arrow', width: '40px' %>
       </div>
@@ -25,29 +31,33 @@
   </div>
   <!-- cards to describe the about section -->
 
-
-
-
 <div id=“about”>
   <div class="about-cards">
     <div class="about-card">
       <div class="about-image-calendar">
 
+
       <%= image_tag "calendar.png", alt: "avatar-large", class: "avatar-large" %>
+
       </div>
       <div class="about-text">
         <h3 class="h3-styling">Planning</h3>
         <p>Digitalize your calendar and never forget any dog</p>
       </div>
+    </div>
 
     <div class="about-card">
       <div class="about-image-map">
+
+
       <%= image_tag "map.svg", alt: "avatar-large", class: "avatar-large" %>
+
       </div>
       <div class="about-text">
         <h3 class="h3-styling">Routing</h3>
         <p>Create the best routes and optimize your work</p>
       </div>
+    </div>
 
     <div class="about-card">
       <div class="about-image-guy">
@@ -60,5 +70,3 @@
     </div>
   </div>
 </div>
-
-
