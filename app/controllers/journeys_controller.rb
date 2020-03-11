@@ -10,7 +10,7 @@ class JourneysController < ApplicationController
     @slots.each_with_index do |slot, index|
       @dog_coordinates[index] = [slot.dog.latitude, slot.dog.longitude]
     end
-    result = Geocoder.search("Krumme Lanke, Berlin")
+    result = Geocoder.search("Großer Tiergarten, Berlin")
     @destination = result.first.coordinates
   end
 end

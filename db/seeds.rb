@@ -17,7 +17,7 @@ Owner.destroy_all
 Walk.destroy_all
 
 puts "creating Users..."
-angie =  User.create!(name: "Angie Walker", email: "Angie@gmail.com", password: "123456", address: "Alt-Treptow, 12435 Berlin", capacity: 10)
+angie =  User.create!(name: "Angie Walker", email: "Angie@gmail.com", password: "123456", address: "Holzmarktstraße 54, 10179 Berlin", capacity: 10)
 puts "created #{User.count} User"
 
 
