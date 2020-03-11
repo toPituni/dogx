@@ -83,19 +83,31 @@ const mapDiv = document.getElementById("map");
 let dogCoordinates;
 let userAddress;
 let destination;
+let dogInfo;
 if (mapDiv) {
   dogCoordinates = JSON.parse(mapDiv.dataset.coordinates);
   userAddress = JSON.parse(mapDiv.dataset.userAddress);
   destination = JSON.parse(mapDiv.dataset.destination);
+  dogInfo = JSON.parse(mapDiv.dataset.dogInformation);
 }
-
+console.log(dogInfo)
+let responseCoords = []
 const addDirectionsToMap = (data, map) => {
   const navigationCards = document.getElementById('accordionExample')
   const instructionList = document.getElementById('instructions-list')
   let count = 1;
   data.response.route[0].leg.map((legs) => {
     if (data.response.route[0].leg.indexOf(legs) !== 0) {
-      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation Instructions to Stop ${count}:</button></h5></div>`)
+      let currentDog;
+      const responseCoords = [legs.maneuver[0].position.latitude.toFixed(3),legs.maneuver[0].position.longitude.toFixed(3)];
+      dogInfo.forEach((dog, index) => {
+        let coords = dog.coords;
+        coords = [coords[0].toFixed(3), coords[1].toFixed(3)]
+        if (responseCoords.join(',') === coords.join(',')) {
+          currentDog = dogInfo[index];
+        }
+      });
+      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation Instructions to ${currentDog.name}:</button></h5></div>`)
       let listString = "";
       legs.maneuver.forEach((leg) => {
         listString += `<li>${leg.instruction}</li>`;
@@ -141,10 +153,10 @@ const fetchSequence = (map) => {
   });
 }
 
-const createMapElement = (defaultLayers) => {
+const createMapElement = (reduced, defaultLayers) => {
   if (document.getElementById('map')) {
     const map = new H.Map(document.getElementById('map'),
-      defaultLayers.vector.normal.map, {
+      reduced, {
       center: {lat: 52.51477270923461, lng: 13.39846691425174},
       zoom: 13,
       pixelRatio: window.devicePixelRatio || 1
@@ -158,6 +170,9 @@ const createMapElement = (defaultLayers) => {
     mapSettings.setAlignment('top-left');
     zoom.setAlignment('top-left');
     scalebar.setAlignment('top-left');
+    // map.setMapScheme("NMAMapSchemeReducedDay")
+    H.map
+    console.log(map)
     return map;
   }
 };
@@ -167,7 +182,10 @@ const initMap = () => {
     apikey: 'kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA'
   });
   const defaultLayers = platform.createDefaultLayers();
-  const newMap = createMapElement(defaultLayers);
+  const reduced = platform.getMapTileService({
+    type: 'base'
+  }).createTileLayer("maptile", "reduced.day", 256, "png8");
+  const newMap = createMapElement(reduced, defaultLayers);
   fetchSequence(newMap);
   window.addEventListener('resize', () => newMap.getViewPort().resize());
   // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
@@ -176,3 +194,5 @@ const initMap = () => {
 }
 
 export { initMap };
+
+
