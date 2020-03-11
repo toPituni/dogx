@@ -37,7 +37,7 @@
   <!------Dropdown list of dogs for adding a new slot-->
   <div class="new-slot-container">
     <%= simple_form_for @slot, method: :post, wrapper: :inline_form, html: { class: 'form-inline' } do |f|%>
-      <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Create a new slot for ', label: false, input_html: {class: "form-rounded"}  %>
+      <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Add another dog', label: false, input_html: {class: "form-rounded"}  %>
       <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
       <%= button_tag type: 'submit' do %>
         <i class="fas fa-plus"></i>
