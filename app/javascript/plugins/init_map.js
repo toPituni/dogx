@@ -80,38 +80,29 @@ const addRouteToMap = (result, map) => {
 };
 
 const mapDiv = document.getElementById("map");
+let dogCoordinates;
+let userAddress;
+let destination;
 if (mapDiv) {
-  const dogCoordinates = JSON.parse(div.dataset.coordinates);
-  const userAddress = JSON.parse(div.dataset.userAddress);
-  const destination = JSON.parse(div.dataset.destination);
+  dogCoordinates = JSON.parse(mapDiv.dataset.coordinates);
+  userAddress = JSON.parse(mapDiv.dataset.userAddress);
+  destination = JSON.parse(mapDiv.dataset.destination);
 }
 
 const addDirectionsToMap = (data, map) => {
-  // get the leg bit of the response
-  // find the directions div with documnet.query slector
-  // iterate over the response leg and add each direction to the div (AdjacentHTML)
-console.log(data)
-const navigationCards = document.getElementById('accordionExample')
-const instructionList = document.getElementById('instructions-list')
-    let count = 0;
-  console.log(data.response.route[0].leg)
+  const navigationCards = document.getElementById('accordionExample')
+  const instructionList = document.getElementById('instructions-list')
+  let count = 1;
   data.response.route[0].leg.map((legs) => {
-    // create Card for each leg
-
-    let count2 = count++;
-    navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count2}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target=collapse${count2} aria-expanded="true" aria-controls="collapse${count2}">Route for destination</button></h5></div>`)
-    // // add position.instruction to the list inside the card
-    let listString = []
-    navigationCards.insertAdjacentHTML("beforeend", `<div id="collapse${count2}" class="collapse show" aria-labelledby="heading${count2}" data-parent="#accordionExample"><div class="card-body"><ul id='instructions-list'><h3>Navigation Instructions:</h3></ul></div></div></div>`)
-    legs.maneuver.forEach((leg) => {
-
-        // listString.push(`<li>${position.instruction}</li>`);
-      listString.push(`${leg.instruction}`);
-        // console.log(listString)
-    });
-
-    navigationCards.insertAdjacentHTML("beforeend", `<li>${listString.join(" ")}</li>`)
-
+    if (data.response.route[0].leg.indexOf(legs) !== 0) {
+      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation Instructions to Stop ${count}:</button></h5></div>`)
+      let listString = "";
+      legs.maneuver.forEach((leg) => {
+        listString += `<li>${leg.instruction}</li>`;
+      });
+      navigationCards.insertAdjacentHTML("beforeend", `<div id="collapse${count}" class="collapse" aria-labelledby="heading${count}" data-parent="#accordionExample"><div class="card-body"><ul id='instructions-list'>${listString}</ul></div></div></div>`)
+      count ++;
+    }
   });
 };
 
@@ -151,23 +142,24 @@ const fetchSequence = (map) => {
 }
 
 const createMapElement = (defaultLayers) => {
-  const map = new H.Map(document.getElementById('map'),
-    defaultLayers.vector.normal.map, {
-    center: {lat: 52.51477270923461, lng: 13.39846691425174},
-    zoom: 13,
-    pixelRatio: window.devicePixelRatio || 1
-  });
-  const ui = H.ui.UI.createDefault(map, defaultLayers);
+  if (document.getElementById('map')) {
+    const map = new H.Map(document.getElementById('map'),
+      defaultLayers.vector.normal.map, {
+      center: {lat: 52.51477270923461, lng: 13.39846691425174},
+      zoom: 13,
+      pixelRatio: window.devicePixelRatio || 1
+    });
+    const ui = H.ui.UI.createDefault(map, defaultLayers);
 
-  var mapSettings = ui.getControl('mapsettings');
-var zoom = ui.getControl('zoom');
-var scalebar = ui.getControl('scalebar');
+    var mapSettings = ui.getControl('mapsettings');
+  var zoom = ui.getControl('zoom');
+  var scalebar = ui.getControl('scalebar');
 
-  mapSettings.setAlignment('top-left');
-  zoom.setAlignment('top-left');
-  scalebar.setAlignment('top-left');
-  return map;
-
+    mapSettings.setAlignment('top-left');
+    zoom.setAlignment('top-left');
+    scalebar.setAlignment('top-left');
+    return map;
+  }
 };
 
 const initMap = () => {
