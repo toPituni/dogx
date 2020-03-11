@@ -15,7 +15,7 @@
       <% end %>
       <% if current_user.present? %>
         <div class="start btn-flat-white">
-          <%= link_to "LET'S GO!", dogs_path %>
+          <%= link_to "LET'S GO!", walks_schedule_path(@date) %>
         </div>
       <% end %>
       <div id="toni">
