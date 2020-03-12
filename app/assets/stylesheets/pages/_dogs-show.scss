@@ -1,10 +1,16 @@
 .back {
  color: white;
  font-size: 22px;
- margin-left: 30px;
- margin-top: 24px;
+ // margin-left: 30px;
+ // margin-top: 24px;
 }
 
+.dog-header {
+  display: flex;
+  .back {
+    margin-left: 20px;
+  }
+}
 
 ul {
   list-style: none;

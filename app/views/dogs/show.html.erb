@@ -1,10 +1,10 @@
 <div class="main-container">
-  <div class="header">
-     <%=link_to dogs_path do %><i class="back fas fa-chevron-left"></i><% end %>
+  <div class="header text-center pt-3 dog-header">
+    <%=link_to dogs_path do %><i class="back fas fa-chevron-left"></i><% end %>
     <%= link_to  root_path do %> <% end %>
-    <h2><%= @dog.name %></h2>
+    <h2><%= @dog.name.upcase %></h2>
   </div>
-
+  <br>
   <div class="container">
     <div class="owner-card">
       <div class="center-avatar">
