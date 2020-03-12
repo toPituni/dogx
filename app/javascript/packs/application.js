@@ -4,5 +4,3 @@ import { initMap } from  "../plugins/init_map";
 
 toggleButtonDays();
 initMap();
-
-
