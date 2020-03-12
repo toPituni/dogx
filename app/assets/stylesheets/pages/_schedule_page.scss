@@ -41,6 +41,9 @@ h6{
 
 #slot_dog_id {
   border: none !important;
+  opacity: 0.6;
+  background-color: white !important;
+  width: 100%;
 }
 
 .section-title {
@@ -74,5 +77,14 @@ h6{
 
 .schedule-form {
   width: 100%;
+}
+
+.form-group {
+  flex-grow: 1;
+  margin-top: 10px;
+}
+
+.form-inline {
+  align-items: center;
 }
 
