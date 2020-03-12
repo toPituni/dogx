@@ -1,0 +1,14 @@
+<% slots.each do |st|  %>
+  <div class = "card-product" data-slot-id="<%= st.id %>" id="dog_card">
+    <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
+    <div class="card-product-infos">
+      <h2><%= st.dog.name %></h2>
+    </div>
+    <div class="icon-container">
+      <!-- here i am adding a remote  -->
+      <%= link_to slot_path(st), method: :delete, remote: true do %>
+        <i class="fas fa-times"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

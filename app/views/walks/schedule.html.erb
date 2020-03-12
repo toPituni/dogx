@@ -2,13 +2,16 @@
 <div class="main-container">
 
   <div class="header">
+    
+    
+    
+    <h6><%=  @days_from_this_week[0].strftime(" %B %e") %> - <%=  @days_from_this_week[4].strftime(" %B %e") %></h6>
     <%= link_to  root_path do %><% end %>
     <h2>My Walks</h2>
   </div>
     <!--------Displaying all days  -->
     <!-- <h1 class="section-title">Your Scheduled Walks</h1> -->
   <div class="day-tabs">
-   <h6> <%=  @days_from_this_week[0].strftime(" %B %e") %> - <%=  @days_from_this_week[4].strftime(" %B %e") %></h6>
     <ul class="nav nav-tabs days_list" role="tablist">
       <%= link_to walks_schedule_path(params[:date].to_date.last_week) do %><i class="fas fa-chevron-left"></i><% end %>
         <% @days_from_this_week.each do |day| %>
@@ -24,32 +27,14 @@
   <!---------Displaying list of dogs  -->
   <div class="dog-slots">
     <% if @walk %>
-      <% @slots.each do |st|  %>
-        <div class = "card-product">
-          <%= cl_image_tag st.dog.image.key, height: 80, width: 80, crop: :fill  %>
-          <div class="card-product-infos">
-            <h2><%= st.dog.name %></h2>
-          </div>
-          <div class="icon-container">
-            <%= link_to slot_path(st), method: :delete do %>
-              <i class="fas fa-times"></i>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'dogs', slots: @slots %>
     <% end %>
   </div>
   <br>
   <!------Dropdown list of dogs for adding a new slot-->
   <div class="new-slot-container">
-    <div class="select-dog-form">
-      <%= simple_form_for @slot, method: :post, html: { class: "form-inline schedule-form" } do |f|%>
-        <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Add another dog', label: false, class: "dropdown-form" %>
-        <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-        <%= button_tag class: "add-dog-button",  type: 'submit' do %>
-        <i class="fas fa-plus"></i>
-        <% end %>
-      <% end %>
+    <div class="form-rounded border select-dog-form">
+      <%= render 'slots/form', slot: @slot %>
     </div>
   </div>
 </div>
