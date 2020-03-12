@@ -1,3 +1,10 @@
+.back {
+ color: white;
+ font-size: 22px;
+ margin-left: 30px;
+ margin-top: 24px;
+}
+
 
 ul {
   list-style: none;
@@ -16,7 +23,7 @@ li {
   // border: 1px solid gray;
   border-radius: 3px;
   padding: 36px 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 35px;
 }
 
@@ -92,8 +99,21 @@ margin-right: 10px;
   justify-content: space-around;
 }
 
+.owner-info-card {
+  border-radius: 3px;
+  padding: 16px 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 35px;
+}
+
 .kill-a-dog a{
   text-decoration: none;
   color: $light-gray;
 }
 
+
+
+.add-dog-button {
+    background-color: white;
+    border: none;
+}

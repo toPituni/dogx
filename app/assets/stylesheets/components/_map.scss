@@ -17,14 +17,6 @@ margin-bottom: 50px;
     margin-bottom: 80px;
 }
 
-.map-info-icon {
-  position: absolute;
-  top: 4%;
-  right: 8%;
-  z-index: 1;
-  font-size: 32px;
-  color: red;
-}
 
 #accordionExample {
   visibility: hidden;
@@ -41,9 +33,19 @@ margin-bottom: 50px;
 
 .map-info-icon {
   position: absolute;
-  top: 4%;
+  top: 3%;
   right: 8%;
   z-index: 1;
   font-size: 32px;
-  color: red;
+  color: $my-blue;
+}
+
+.card-header h5 {
+  color: $gray;
+  text-align: center;
+}
+
+.card {
+  background-color: white;
+  text-decoration: none !important;
 }

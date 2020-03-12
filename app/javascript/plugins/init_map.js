@@ -136,7 +136,7 @@ const addDirectionsToMap = (data, map) => {
           currentDog = dogInfo[index];
         }
       });
-      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation Instructions to ${count}:</button></h5></div>`)
+      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" style="color: black; text-decoration: none;" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation to stop ${count}</button></h5></div>`)
       let listString = "";
       legs.maneuver.forEach((leg) => {
         listString += `<li>${leg.instruction}</li>`;
@@ -156,15 +156,16 @@ const addDirectionsToMap = (data, map) => {
       const mapContainer = document.querySelector('.mapDiv')
       const infoIcon = document.querySelector('.info-icon');
       const mapIcon = document.querySelector('.map-icon');
+      // debugger;
 
       if (mapIcon) {
         mapIcon.remove();
-        mapContainer.insertAdjacentHTML("afterbegin", `<i class="fas fa-map-marked-alt map-info-icon map-icon" id="toggle-map"></i>`);
+        toggleMap.insertAdjacentHTML("afterbegin", `<i class="fas fa-info map-info-icon info-icon" id="toggle-map"></i>`);
       };
 
       if (infoIcon) {
         infoIcon.remove();
-        mapContainer.insertAdjacentHTML("afterbegin", `<i class="fas fa-info map-info-icon info-icon" id="toggle-map"></i>`);
+        toggleMap.insertAdjacentHTML("afterbegin", `<i class="fas fa-map-marked-alt map-info-icon map-icon" id="toggle-map"></i>`);
       };
 
       map.style.visibility = map.style.visibility === 'hidden' ? 'visible' : "hidden";
@@ -174,6 +175,7 @@ const addDirectionsToMap = (data, map) => {
       // list.style.display = list.style.display === 'none' ? 'block' : "none";
 
       list.classList.toggle('show-card');
+
       // this.classList.toggle('show-list-text');
     }
     toggleMap.addEventListener('click', mapToggleEvent);
