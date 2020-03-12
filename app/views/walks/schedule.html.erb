@@ -2,11 +2,10 @@
 <div class="main-container">
 
   <div class="header">
-    <h2></h2>
-    <%#= image_tag 'dog_logo.png', alt: 'dog_logo', width: '55px' %>
+    <h1>DOGX</h1><h2>Your Walks</h2>
   </div>
     <!--------Displaying all days  -->
-    <h1 class="section-title">Your Scheduled Walks</h1>
+    <!-- <h1 class="section-title">Your Scheduled Walks</h1> -->
   <div class="day-tabs">
    <h6> <%=  @days_from_this_week[0].strftime(" %B %e") %> - <%=  @days_from_this_week[4].strftime(" %B %e") %></h6>
     <ul class="nav nav-tabs days_list" role="tablist">

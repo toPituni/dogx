@@ -3,18 +3,26 @@
   height: 64px;
   background-color: #169FDA;
   margin: 0;
-  text-align: center;
-  color: white;
+  text-align: left;
   margin-bottom: 10px;
-  // border-bottom-left-radius: 15px;
-  // border-bottom-right-radius: 15px;
-  h1 {
-    padding: 10px 0;
-    font-weight: bold;
-    font-size: 29px;
-  }
-}
+  display: inline-block;
 
-h2 {
-  align-text: left;
+  h1 {
+    padding: 23px 0;
+    font-weight: bolder;
+    font-size: 18px;
+    margin-left: 23px;
+    color: white;
+    display: inline-block;
+  }
+
+
+  h2 {
+      padding: 14px 0;
+      font-size: 20px;
+      color: white;
+      margin-left: 64px;
+      font-weight: lighter;
+      display: inline-block;
+  }
 }
