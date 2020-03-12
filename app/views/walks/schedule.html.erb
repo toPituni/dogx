@@ -6,8 +6,9 @@
     <%#= image_tag 'dog_logo.png', alt: 'dog_logo', width: '55px' %>
   </div>
     <!--------Displaying all days  -->
+    <h1 class="section-title">Your Scheduled Walks</h1>
   <div class="day-tabs">
-   <h6> <%=  @days_from_this_week[0].strftime("%d.%m") %> - <%=  @days_from_this_week[4].strftime("%d.%m") %></h6>
+   <h6> <%=  @days_from_this_week[0].strftime(" %B %e") %> - <%=  @days_from_this_week[4].strftime(" %B %e") %></h6>
     <ul class="nav nav-tabs days_list" role="tablist">
       <%= link_to walks_schedule_path(params[:date].to_date.last_week) do %><i class="fas fa-chevron-left"></i><% end %>
         <% @days_from_this_week.each do |day| %>
@@ -41,12 +42,14 @@
   <br>
   <!------Dropdown list of dogs for adding a new slot-->
   <div class="new-slot-container">
-    <%= simple_form_for @slot, method: :post, wrapper: :inline_form, html: { class: 'form-inline' } do |f|%>
-      <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Add another dog', label: false, input_html: {class: "form-rounded"}  %>
-      <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
-      <%= button_tag type: 'submit' do %>
+    <div class="form-rounded border select-dog-form">
+      <%= simple_form_for @slot, method: :post, html: { class: "form-inline schedule-form" } do |f|%>
+        <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Add another dog', label: false %>
+        <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+        <%= button_tag type: 'submit' do %>
         <i class="fas fa-plus"></i>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
