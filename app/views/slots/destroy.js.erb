@@ -1,0 +1,8 @@
+function refreshForm(innerHTML) {
+  const newSlotForm = document.querySelector('.select-dog-form');
+  newSlotForm.innerHTML = innerHTML;
+}
+
+document.querySelector("[data-slot-id='<%= @slot.id %>']")
+  .remove();
+refreshForm('<%= j render "slots/form", slot: Slot.new, walk: @walk %>');

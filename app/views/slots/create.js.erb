@@ -1,0 +1,18 @@
+
+function refreshForm(innerHTML) {
+  const newSlotForm = document.querySelector('.select-dog-form');
+  newSlotForm.innerHTML = innerHTML;
+}
+
+function addDog(dogsHTML) {
+  const dogs = document.querySelector('.dog-slots');
+  dogs.innerHTML = '';
+  dogs.insertAdjacentHTML('beforeend', dogsHTML);
+}
+
+<% if @slot.errors.any? %>
+  refreshForm('<%= j render "slots/form", slot: @slot, walk: @walk %>');
+<% else %>
+  addDog('<%= j render "walks/dogs", slots: @walk.slots %>');
+  refreshForm('<%= j render "slots/form", slot: Slot.new, walk: @walk %>');
+<% end %>

@@ -1,0 +1,7 @@
+<%= simple_form_for slot, method: :post, html: { class: "form-inline schedule-form" }, remote: true do |f|%>
+  <%= f.association :dog, collection: Dog.all.where.not(id: @walk.slots.select(:dog_id)), prompt: 'Add another dog', label: false %>
+  <%= f.input :walk_id, :as => :hidden, :input_html => { :value => @walk.id } %>
+  <%= button_tag type: 'submit' do %>
+  <i class="fas fa-plus"></i>
+  <% end %>
+<% end %>
