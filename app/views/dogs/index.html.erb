@@ -1,10 +1,11 @@
 <div class="main-container">
-  <div class="header">
+  <div class="header text-center pt-3">
     <%#= image_tag 'dog_logo.png', alt<!-- : 'dog_logo', width: '55px' %>
     <%#= image_tag 'dog_logo.svg' %>
-    <h2>My Pack</h2>
+    <h2>MY PACK</h2>
   </div>
   <div class="container">
+    <br>
     <% @dogs.each do |dog| %>
       <%= link_to  dog_path(dog.id), class: "dog-link" do %>
         <div class="card-product">

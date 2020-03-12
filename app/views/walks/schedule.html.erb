@@ -1,14 +1,14 @@
 
 <div class="main-container">
 
-  <div class="header">
+  <div class="header text-center pt-2">
     <%= link_to  root_path do %><% end %>
-    <h2>My Walks</h2>
+    <h2>MY WALKS</h2>
+    <h6> <%=  @days_from_this_week[0].strftime(" %B %e") %> - <%=  @days_from_this_week[4].strftime(" %B %e") %></h6>
   </div>
     <!--------Displaying all days  -->
     <!-- <h1 class="section-title">Your Scheduled Walks</h1> -->
   <div class="day-tabs">
-   <h6> <%=  @days_from_this_week[0].strftime(" %B %e") %> - <%=  @days_from_this_week[4].strftime(" %B %e") %></h6>
     <ul class="nav nav-tabs days_list" role="tablist">
       <%= link_to walks_schedule_path(params[:date].to_date.last_week) do %><i class="fas fa-chevron-left"></i><% end %>
         <% @days_from_this_week.each do |day| %>
