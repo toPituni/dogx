@@ -1,9 +1,8 @@
 <div class="main-container">
-  <div class="index-header">
-    <%= image_tag 'dog_logo.png', alt: 'dog_logo', width: '55px' %>
+  <div class="header">
+    <%#= image_tag 'dog_logo.png', alt: 'dog_logo', width: '55px' %>
+    <h1>DOGX</h1><h2>MY PACK</h2>
   </div>
-
-  <br>
   <div class="container">
     <% @dogs.each do |dog| %>
       <%= link_to  dog_path(dog.id), class: "dog-link" do %>
