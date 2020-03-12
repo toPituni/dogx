@@ -1,6 +1,8 @@
 <div class="main-container">
   <div class="header">
-    <h1><%= @dog.name.upcase %></h1>
+     <%=link_to dogs_path do %><i class="back fas fa-chevron-left"></i><% end %>
+    <%= link_to  root_path do %> <% end %>
+    <h2><%= @dog.name %></h2>
   </div>
 
   <div class="container">
@@ -18,25 +20,28 @@
         <%= f.input :thursday, label: "THU", label_html: { class: 'btn-day' }%>
         <%= f.input :friday, label: "FRI", label_html: { class: 'btn-day' }%>
         <%= f.submit 'SAVE', class: "btn btn-flat" %><% end %>
-
-      <p class="schedule_label">Owner Information</p>
-      <%= link_to edit_dog_path do %>
-              <i class="fas fa-edit" style="float:right;"></i>
-            <% end %>
-
-      <ul class="dog-info">
-        <li><span><i class="fas fa-user"></i></span> <%= @dog.owner.first_name %>
-          <%= @dog.owner.last_name %></li>
-        <li><span><i class="fas fa-map-marker-alt"></i></span> <%= @dog.pick_up_address %></li>
-        <li><span><i class="fas fa-phone"></i></span> <%= @dog.owner.telephone_number %></li>
-      </ul>
     </div>
-    <div class="row justify-content-center">
 
+
+      <div class="owner-info-card">
+        <p class="schedule_label">Owner Information</p>
+          <%= link_to edit_dog_path do %>
+            <i class="fas fa-edit" style="float:right;"></i>
+            <% end %>
+        <ul class="owner-info">
+          <li><span><i class="fas fa-user"></i></span> <%= @dog.owner.first_name %>
+            <%= @dog.owner.last_name %></li>
+          <li><span><i class="fas fa-map-marker-alt"></i></span> <%= @dog.pick_up_address %></li>
+          <li><span><i class="fas fa-phone"></i></span> <%= @dog.owner.telephone_number %></li>
+        </ul>
+      </div>
+
+
+    <div class="row justify-content-center">
       <div class="btn btn-empty kill-a-dog ">
         <%= link_to "DELETE", dog_path(@dog), method: :delete %>
-          <!-- <i class="fas fa-trash" style="float:right;"></i> -->
       </div>
     </div>
+    <br>
   </div>
 </div>
