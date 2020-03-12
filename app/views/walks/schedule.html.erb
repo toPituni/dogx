@@ -1,5 +1,10 @@
 
 <div class="main-container">
+
+  <div class="header">
+    <h2></h2>
+    <%#= image_tag 'dog_logo.png', alt: 'dog_logo', width: '55px' %>
+  </div>
     <!--------Displaying all days  -->
   <div class="day-tabs">
    <h6> <%=  @days_from_this_week[0].strftime("%d.%m") %> - <%=  @days_from_this_week[4].strftime("%d.%m") %></h6>
