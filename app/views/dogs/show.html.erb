@@ -8,31 +8,34 @@
       <div class="center-avatar">
         <%= cl_image_tag @dog.image.key, height: 150, width: 150, crop: :fill%>
       </div>
-      <ul class="dog-info">
-        <li><span>Breed:</span> <%= @dog.breed %></li>
-        <li><span>Notes:</span> <%= @dog.special_requirements %><br><br></li>
-        <li><span>Owner:</span> <%= @dog.owner.first_name %> <%= @dog.owner.last_name %></li>
-        <li><span>Address:</span> <%= @dog.pick_up_address %></li>
-        <li><span>Phone:</span> <%= @dog.owner.telephone_number %></li>
-        <li><span>Email:</span> <%= @dog.owner.email %></li>
-      </ul>
-    </div>
 
-    <h3><%= @dog.name %> walks with you on:</h3>
-
+      <h3 class="dog_show_info"> Your Schedule With <%= @dog.name %></h3>
+      <p class="schedule_label">Select days to change <%= @dog.name %>'s schedule</p>
       <%= simple_form_for [@dog, @schedule], html: { class: "form-inline"} do |f| %>
         <%= f.input :monday, label: "MON", label_html: { class: 'btn-day' }%>
         <%= f.input :tuesday, label: "TUE", label_html: { class: 'btn-day' }%>
         <%= f.input :wednesday, label: "WED", label_html: { class: 'btn-day' }%>
         <%= f.input :thursday, label: "THU", label_html: { class: 'btn-day' }%>
         <%= f.input :friday, label: "FRI", label_html: { class: 'btn-day' }%>
-        <%= button_tag type:'submit' do %> <i class="far fa-save"></i> <% end %>
-      <% end %>
+        <%= f.submit 'SAVE', class: "btn btn-flat" %><% end %>
 
-      <div class="dog-links">
-        <%= link_to "Back", dogs_path %>
-        <%= link_to "Edit", edit_dog_path  %>
-        <%= link_to "Delete", dog_path(@dog), method: :delete %>
+      <p class="schedule_label">Owner Information</p>
+      <%= link_to edit_dog_path do %>
+              <i class="fas fa-edit" style="float:right;"></i>
+            <% end %>
+
+      <ul class="dog-info">
+        <li><span><i class="fas fa-user"></i></span> <%= @dog.owner.first_name %>
+          <%= @dog.owner.last_name %></li>
+        <li><span><i class="fas fa-map-marker-alt"></i></span> <%= @dog.pick_up_address %></li>
+        <li><span><i class="fas fa-phone"></i></span> <%= @dog.owner.telephone_number %></li>
+      </ul>
+    </div>
+    <div class="row justify-content-center">
+
+      <div class="btn btn-empty kill-a-dog ">
+        <%= link_to "DELETE", dog_path(@dog), method: :delete %>
+          <!-- <i class="fas fa-trash" style="float:right;"></i> -->
       </div>
     </div>
   </div>
