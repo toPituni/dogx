@@ -4,15 +4,15 @@ function refreshForm(innerHTML) {
   newSlotForm.innerHTML = innerHTML;
 }
 
-function addDog(dogsHTML) {
+function addDog(dogHTML) {
   const dogs = document.querySelector('.dog-slots');
-  dogs.innerHTML = '';
-  dogs.insertAdjacentHTML('beforeend', dogsHTML);
+  // dogs.innerHTML = '';
+  dogs.insertAdjacentHTML('beforeend', dogHTML);
 }
 
 <% if @slot.errors.any? %>
   refreshForm('<%= j render "slots/form", slot: @slot, walk: @walk %>');
 <% else %>
-  addDog('<%= j render "walks/dogs", slots: @walk.slots %>');
+  addDog('<%= j render "walks/new_slot", slot: @slot %>');
   refreshForm('<%= j render "slots/form", slot: Slot.new, walk: @walk %>');
 <% end %>

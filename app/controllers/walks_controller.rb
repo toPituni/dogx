@@ -9,7 +9,8 @@ class WalksController < ApplicationController
     @walk = Walk.find_by date: today
     # @walk = Walk.find_by date: params[:date]
     @walk = Walk.new if @walk.nil?
-    @slots = @walk.slots.order(:created_at)
+    @slots = @walk.slots.order(:id)
+    # @slots = @walk.slots.order(:created_at)
 
     # Below @slot is for creating new slot
     @slot = Slot.new(walk: @walk)

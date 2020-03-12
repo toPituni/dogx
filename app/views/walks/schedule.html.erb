@@ -21,7 +21,9 @@
   <!---------Displaying list of dogs  -->
   <div class="dog-slots">
     <% if @walk %>
-      <%= render 'dogs', slots: @slots %>
+      <% @slots.each do |slot|  %>
+        <%= render 'new_slot', slot: slot %>
+      <% end %>
     <% end %>
   </div>
   <!------Dropdown list of dogs for adding a new slot-->
