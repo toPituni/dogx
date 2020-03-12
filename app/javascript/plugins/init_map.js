@@ -25,6 +25,10 @@ const onBubbleTap = (evt) =>  {
     bubble.open();
   }
 }
+
+
+
+
 // setting the interactive layers for the map(satellite, etc)
 // const setInteractive = (map) => {
 //   const provider = map.getBaseLayer().getProvider();
@@ -132,7 +136,7 @@ const addDirectionsToMap = (data, map) => {
           currentDog = dogInfo[index];
         }
       });
-      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation Instructions to ${currentDog.name}:</button></h5></div>`)
+      navigationCards.insertAdjacentHTML("beforeend", `<div class="card"><div class="card-header" id="heading${count}"><h5 class="mb-0"><button class="btn btn-link" style="color: black; text-decoration: none;" type="button" data-toggle="collapse" data-target="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">Navigation to stop ${count}</button></h5></div>`)
       let listString = "";
       legs.maneuver.forEach((leg) => {
         listString += `<li>${leg.instruction}</li>`;
@@ -142,6 +146,42 @@ const addDirectionsToMap = (data, map) => {
     }
   });
 };
+
+
+(function() {
+  const toggleMap = document.getElementById('toggle-map');
+  if (toggleMap) {
+    function mapToggleEvent() {
+      const map = document.getElementById('map');
+      const mapContainer = document.querySelector('.mapDiv')
+      const infoIcon = document.querySelector('.info-icon');
+      const mapIcon = document.querySelector('.map-icon');
+      // debugger;
+
+      if (mapIcon) {
+        mapIcon.remove();
+        toggleMap.insertAdjacentHTML("afterbegin", `<i class="fas fa-info map-info-icon info-icon" id="toggle-map"></i>`);
+      };
+
+      if (infoIcon) {
+        infoIcon.remove();
+        toggleMap.insertAdjacentHTML("afterbegin", `<i class="fas fa-map-marked-alt map-info-icon map-icon" id="toggle-map"></i>`);
+      };
+
+      map.style.visibility = map.style.visibility === 'hidden' ? 'visible' : "hidden";
+      const list = document.getElementById('accordionExample');
+      // debugger;
+      list.style.visibility = list.style.visibility === 'visible' ? 'hidden' : "visible";
+      // list.style.display = list.style.display === 'none' ? 'block' : "none";
+
+      list.classList.toggle('show-card');
+
+      // this.classList.toggle('show-list-text');
+    }
+    toggleMap.addEventListener('click', mapToggleEvent);
+  }
+})();
+
 
 
 const fetchRoute = (data, map) => {
@@ -192,11 +232,11 @@ const createMapElement = (reduced, defaultLayers) => {
 
     var mapSettings = ui.getControl('mapsettings');
   var zoom = ui.getControl('zoom');
-  var scalebar = ui.getControl('scalebar');
+  // var scalebar = ui.getControl('scalebar');
 
     mapSettings.setAlignment('top-left');
     zoom.setAlignment('top-left');
-    scalebar.setAlignment('top-left');
+    // scalebar.setAlignment('top-left');
     // map.setMapScheme("NMAMapSchemeReducedDay")
     H.map
     console.log(map)

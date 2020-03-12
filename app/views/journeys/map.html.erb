@@ -1,6 +1,10 @@
 <div class="mapDiv">
+  <div id="toggle-map">
+    <i class="fas fa-info map-info-icon info-icon"></i>
+  </div>
+
   <div
-    style="width: 100vw; height: 60vh"
+    style="width: 100vw; height: 100vh"
 
     id="map"
     data-coordinates="<%= @dog_coordinates.to_json %>"
@@ -9,9 +13,5 @@
     data-dog-information="<%= @dog_info.to_json %>"
     >
   </div>
-    <div class="accordion" id="accordionExample">
-  </div>
 </div>
-
-  <div class="accordion" id="accordionExample"></div>
-</div>
+<div class="accordion" id="accordionExample"></div>

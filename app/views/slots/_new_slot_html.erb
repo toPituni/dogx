@@ -1,6 +1,0 @@
-<%= simple_form_for @slot, method: :post do |f|%>
-
-  <%= f.input :name, collection: Dog.all.order(:name) %>
-
-  <%= f.submit "+"%>
-<% end %>
