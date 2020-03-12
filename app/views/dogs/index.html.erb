@@ -1,7 +1,8 @@
 <div class="main-container">
   <div class="header">
     <%#= image_tag 'dog_logo.png', alt: 'dog_logo', width: '55px' %>
-    <h1>DOGX</h1><h2>MY PACK</h2>
+    <%= link_to  root_path do %> <h1>DOGX</h1> <% end %>
+    <h2>My Pack</h2>
   </div>
   <div class="container">
     <% @dogs.each do |dog| %>

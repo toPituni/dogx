@@ -1,6 +1,7 @@
 <div class="main-container">
   <div class="header">
-    <h1><%= @dog.name.upcase %></h1>
+    <%= link_to  root_path do %> <h1>DOGX</h1> <% end %>
+    <h2><%= @dog.name %></h2>
   </div>
 
   <div class="container">
@@ -35,7 +36,6 @@
 
       <div class="btn btn-empty kill-a-dog ">
         <%= link_to "DELETE", dog_path(@dog), method: :delete %>
-          <!-- <i class="fas fa-trash" style="float:right;"></i> -->
       </div>
     </div>
   </div>
