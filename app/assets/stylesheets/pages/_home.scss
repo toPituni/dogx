@@ -11,8 +11,46 @@ p {
   margin-bottom: 0px;
 }
 
+
+#toni {
+  height: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  animation: jump 3s infinite;
+      img {
+      content: ‘\f0a8’;
+      font-family: ‘FontAwesome’;
+      font-size: 70px;
+      transition: .3s ease-in-out;
+  }
+    img:hover {
+      opacity: 0.7;
+      transition: .3s ease-in-out;
+  }
+}
+
+@keyframes jump {
+  0% { top: 0; } 50% { top: 10px; } 100% { top: 0; }
+}
+
 .about-cards {
 
+
+}
+
+.button-container {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.single-button {
+  padding-top: 50px;
+  height: 100px;
 }
 
 .about-card {
@@ -22,7 +60,7 @@ p {
   text-align: center;
   align-items: center;
   color: $gray;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .about-text {
@@ -36,7 +74,7 @@ p {
   color: $medium-gray;
 }
 
-.about-text h3 {
+.about-text .h3-styling {
   color: $gray;
   font-size: 25px;
   font-weight: bolder;
@@ -72,29 +110,8 @@ p {
   margin: 10px;
 }
 
-@keyframes jump {
-  0% { top: 0; } 50% { top: 10px; } 100% { top: 0; }
-}
 
-#toni {
-  height: 100px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: relative;
-  animation: jump 3s infinite;
-      img {
-      content: ‘\f0a8’;
-      font-family: ‘FontAwesome’;
-      font-size: 80px;
-      transition: .3s ease-in-out;
-  }
-    img:hover {
-      opacity: 0.7;
-      transition: .3s ease-in-out;
-  }
-}
+
 
 
 
