@@ -38,6 +38,10 @@ margin-bottom: 50px;
   z-index: 1;
   font-size: 32px;
   color: $my-blue;
+  &.map-icon {
+    top: 2%;
+    color: white;
+  }
 }
 
 .card-header h5 {
