@@ -1,3 +1,4 @@
+
 ul {
   list-style: none;
   padding-left: 10px;
@@ -6,14 +7,16 @@ ul {
 }
 
 li {
-  font-size: 20px;
+  font-size: 16px;
+  margin: 12px 0;
 }
+
 
 .owner-card {
   // border: 1px solid gray;
   border-radius: 3px;
-  padding: 8px;
-  // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 36px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
   margin-bottom: 35px;
 }
 
@@ -25,7 +28,72 @@ img {
   text-align: center;
 }
 
+.dog_show_info{
+  padding: 29px 0;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.schedule_label{
+  padding: 15px 0;
+  opacity: 0.4;
+  text-align: center;
+}
+
 span {
   font-weight: bold;
+}
+
+.btn_style {
+  font-size: 23px;
+}
+
+form {
+  padding: 10px;
+  margin-top: 4px;
+  justify-content: space-between;
+}
+
+
+.form-check {
+  margin: 20px 0;
+  padding-left: 0px;
+}
+
+.form-check-input {
+  visibility: hidden;
+}
+
+.btn-day {
+  min-width: 60px;
+  text-align: center;
+  border: 1px solid $my-blue;
+  padding: 10px;
+  border-radius: 3px;
+  color: $gray !important;
+  &.active {
+    color: white !important;
+    background-color: #166182;
+    border: 1px solid #166182;
+  }
+}
+
+.btn-flat {
+  margin: 0 auto;
+  width: 250px !important;
+}
+
+.fa-edit{
+margin-left: auto;
+margin-right: 10px;
+}
+
+.dog_links {
+  justify-content: space-around;
+}
+
+.kill-a-dog a{
+  text-decoration: none;
+  color: $light-gray;
 }
 
