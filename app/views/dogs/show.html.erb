@@ -1,8 +1,9 @@
 <div class="main-container">
   <div class="header text-center pt-3 dog-header">
-    <%=link_to dogs_path do %><i class="back fas fa-chevron-left"></i><% end %>
-    <%= link_to  root_path do %> <% end %>
-    <h2><%= @dog.name.upcase %></h2>
+    <%=link_to dogs_path, class: 'back-arrow' do %><i class="back fas fa-chevron-left"></i><% end %>
+    <div class="dog-name">
+      <h2><%= @dog.name.upcase %></h2>
+    </div>
   </div>
   <br>
   <div class="container">
