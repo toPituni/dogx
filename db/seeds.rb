@@ -132,25 +132,25 @@ puts "Created #{Dog.count} Dogs"
 
 puts "Creating Schedules..."
 
-s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d1)
+s = Schedule.create!(monday: false, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d1)
 d1.schedule = s
 s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true, friday: true, dog:d2)
 d2.schedule = s
-s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d3)
+s = Schedule.create!(monday: false, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d3)
 d3.schedule = s
-s = Schedule.create!(monday: true, tuesday: false, wednesday: false, thursday: true, friday: false, dog:d4)
+s = Schedule.create!(monday: false, tuesday: false, wednesday: false, thursday: true, friday: true, dog:d4)
 d4.schedule = s
 s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true, friday: true, dog:d5)
 d5.schedule = s
-s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d6)
+s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: false, dog:d6)
 d6.schedule = s
 s = Schedule.create!(monday: true, tuesday: false, wednesday: true, thursday: true, friday: false, dog:d7)
 d7.schedule = s
-s = Schedule.create!(monday: false, tuesday: true, wednesday: false, thursday: false, friday: true, dog:d8)
+s = Schedule.create!(monday: true, tuesday: true, wednesday: false, thursday: false, friday: false, dog:d8)
 d8.schedule = s
 s = Schedule.create!(monday: true, tuesday: false, wednesday: true, thursday: true, friday: false, dog:d9)
 d9.schedule = s
-s = Schedule.create!(monday: false, tuesday: false, wednesday: true, thursday: true, friday: true, dog:d10)
+s = Schedule.create!(monday: true, tuesday: false, wednesday: true, thursday: true, friday: false, dog:d10)
 d10.schedule = s
 puts "created #{Schedule.count} schedule"
 
