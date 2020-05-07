@@ -185,10 +185,10 @@ const addDirectionsToMap = (data, map) => {
 
 
 const fetchRoute = (data, map) => {
-  const apiKey = 'C4kdOOIWZruh2MreeMVR9YN7ZJx0bqPHo02yexn6mpo'
+  // const apiKey = 'C4kdOOIWZruh2MreeMVR9YN7ZJx0bqPHo02yexn6mpo'
   // const aureliaApiKey2 = "AF3pUyok2D8EvVa4ES72E89LSPyM1bqwCe3GNLqieDg"
   // const apiKey = "o4F8LOJ4Pp-4PHpc5SadcpYdByMtCco0F8fl8x2m-oY";
-  // const apiKey = "JFeD2SXYy-nLjkIdWvN-3juOcRP22sIAD-DT3UY99WU";
+     const apiKey = "JFeD2SXYy-nLjkIdWvN-3juOcRP22sIAD-DT3UY99WU";
   // const apiKey = "_6M5HO5UI1_p--N6nM5Auu9NyBB24_aiMPU9ERW3uIk";
   let routeEndpoint = `https://route.ls.hereapi.com/routing/7.2/calculateroute.json?waypoint0=${userAddress.join(',')}`;
   const waypoints = data.results[0].waypoints;
@@ -205,10 +205,10 @@ const fetchRoute = (data, map) => {
 }
 
 const fetchSequence = (map) => {
-  const apiKey = 'C4kdOOIWZruh2MreeMVR9YN7ZJx0bqPHo02yexn6mpo'
+  // const apiKey = 'C4kdOOIWZruh2MreeMVR9YN7ZJx0bqPHo02yexn6mpo'
   // const aureliaApiKey2 = "AF3pUyok2D8EvVa4ES72E89LSPyM1bqwCe3GNLqieDg"
   // const apiKey = "kRsg1jkH1P-VUi-_G_I8_ju8YGs9GZasZIg_3_7q6gA";
-  // const apiKey = "JFeD2SXYy-nLjkIdWvN-3juOcRP22sIAD-DT3UY99WU";
+    const apiKey = "JFeD2SXYy-nLjkIdWvN-3juOcRP22sIAD-DT3UY99WU";
   // const apiKey = "_6M5HO5UI1_p--N6nM5Auu9NyBB24_aiMPU9ERW3uIk";
   let sequenceEndpoint = `https://wse.ls.hereapi.com/2/findsequence.json?start=${userAddress.join(',')}`;
   for (let [key, value] of Object.entries(dogCoordinates)) {
@@ -252,7 +252,7 @@ const createMapElement = (reduced, defaultLayers) => {
 
 const initMap = () => {
   const platform = new H.service.Platform({
-    apikey: 'C4kdOOIWZruh2MreeMVR9YN7ZJx0bqPHo02yexn6mpo'
+    apikey: 'JFeD2SXYy-nLjkIdWvN-3juOcRP22sIAD-DT3UY99WU'
   });
   const defaultLayers = platform.createDefaultLayers();
   const reduced = platform.getMapTileService({
