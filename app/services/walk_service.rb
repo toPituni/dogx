@@ -18,7 +18,7 @@ class WalkService
      next_day = (next_day - 1)
    end
 
-   21.times do
+   61.times do
      if next_day.friday?
        date_range << next_day
        next_day = (next_day + 3)
